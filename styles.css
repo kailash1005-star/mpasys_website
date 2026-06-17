@@ -124,7 +124,8 @@ section{position:relative;}
   transform:scale(1.12);
 }
 .hero-bg.paused{}
-.hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.35),rgba(0,0,0,.15) 45%,rgba(0,0,0,.55));}
+.hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;}
+.hero-overlay{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(6,11,24,.55),rgba(6,11,24,.35) 45%,rgba(6,11,24,.75));}
 .hero-content{position:relative;z-index:2;width:100%;max-width:1480px;margin:0 auto;padding:0 var(--pad);}
 .hero-title{
   color:var(--white);font-weight:400;letter-spacing:-.03em;
@@ -164,7 +165,9 @@ section{position:relative;}
 
 /* ===================== 90% STAT (pins; orbit slides up over it) ===================== */
 .stat{position:sticky;top:0;height:100vh;background:#000;z-index:1;overflow:hidden;}
-.stat-sticky{height:100%;display:flex;align-items:center;}
+.stat-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;}
+.stat::after{content:"";position:absolute;inset:0;background:rgba(4,8,16,.62);z-index:1;pointer-events:none;}
+.stat-sticky{position:relative;z-index:2;height:100%;display:flex;align-items:center;}
 .stat-spacer{height:95vh;}                 /* scroll room so words reveal before orbit covers */
 .stat-media{
   position:absolute;left:3%;top:50%;transform:translateY(-50%);
