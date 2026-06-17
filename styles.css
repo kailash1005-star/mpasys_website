@@ -515,6 +515,98 @@ section{position:relative;}
 @media(max-width:620px){
   .proof-inner{grid-template-columns:1fr;}
 }
+
+/* ===================== MOBILE NAV (hamburger) ===================== */
+.nav-toggle{display:none;flex-direction:column;justify-content:center;gap:5px;width:42px;height:42px;border:1px solid rgba(255,255,255,.25);border-radius:9px;}
+.site-header.light .nav-toggle{border-color:rgba(0,0,0,.18);}
+.nav-toggle span{display:block;width:18px;height:2px;background:currentColor;margin:0 auto;border-radius:2px;transition:transform .25s ease,opacity .2s ease;}
+.nav-toggle.active span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.nav-toggle.active span:nth-child(2){opacity:0;}
+.nav-toggle.active span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+.mobile-nav{display:none;flex-direction:column;background:#0a0a0a;border-top:1px solid rgba(255,255,255,.08);}
+.mobile-nav.open{display:flex;}
+.mobile-nav a{color:#fff;font-size:16px;padding:16px var(--pad);border-bottom:1px solid rgba(255,255,255,.07);}
+.mobile-nav a:active{background:rgba(255,255,255,.06);}
+.mobile-nav .mobile-cta{background:var(--brand-grad);color:#fff;border:none;font-weight:500;text-align:center;margin:14px var(--pad) 20px;border-radius:10px;padding:14px;}
+.site-header.nav-open{background:#0a0a0a;color:#fff;}
+
+/* ===================== MOBILE / PHONE LAYOUT ===================== */
+@media(max-width:600px){
+  :root{--pad:20px;}
+  /* header */
+  .header-inner{padding:13px var(--pad);gap:12px;}
+  .logo{font-size:19px;}
+  .main-nav{display:none;}
+  .nav-toggle{display:flex;}
+  .btn-demo{font-size:14px;padding:9px 16px;}
+
+  /* hero */
+  .hero{min-height:88vh;}
+  .hero-content{padding:0 var(--pad);max-width:100%;}
+  .hero-eyebrow{font-size:11px;letter-spacing:.14em;margin-bottom:16px;}
+  .hero-title{font-size:clamp(28px,8vw,46px);line-height:1.06;max-width:100%;}
+  .hero-sub{font-size:15px;margin-top:18px;max-width:100%;}
+  .hero-eyebrow,.hero-title,.hero-sub,.hero-cta-row{box-sizing:border-box;overflow-wrap:break-word;}
+  .hero-cta-row{gap:14px;margin-top:26px;}
+  .btn-hero{padding:13px 24px;font-size:15px;}
+  .btn-hero-ghost{font-size:13px;}
+  .scroll-explore{display:none;}
+
+  /* story panels */
+  .story{height:200vh;}
+  .panel-stack{width:84vw;height:58vw;margin-bottom:30px;}
+  .story-text h2{font-size:clamp(24px,6.4vw,34px);}
+  .story-text p{font-size:15px;}
+
+  /* proof strip */
+  .proof{padding:60px var(--pad);}
+  .proof-num{font-size:clamp(40px,12vw,56px);}
+
+  /* stat card */
+  .stat-card{width:auto;left:var(--pad);right:var(--pad);padding:30px 24px;}
+  .stat-text{font-size:clamp(23px,6.6vw,34px);}
+
+  /* orbit */
+  .float-section{padding:40px var(--pad) 56px;}
+  .orbit-stage{height:min(64vh,540px);}
+  .float-title{font-size:clamp(28px,8vw,48px);margin-bottom:24px;}
+
+  /* benchmark / pillars */
+  .benchmark-sticky{padding:60px var(--pad);}
+  .benchmark-eyebrow{font-size:clamp(18px,5vw,24px);}
+  .benchmark-title{font-size:clamp(26px,7vw,38px);}
+  .bm-card{padding:28px 24px;}
+  .bm-head{font-size:clamp(21px,5.6vw,28px);margin-top:30px;}
+
+  /* labs / german market */
+  .labs{padding:0 var(--pad) 70px;}
+  .labs-title{font-size:clamp(26px,7vw,40px);}
+  .bento{gap:14px;grid-auto-rows:auto;}
+  .bento-card{min-height:170px;}
+  .b-ms{min-height:150px;}
+  .ms-logo{font-size:20px;}
+
+  /* how we engage */
+  .engage{padding:64px var(--pad);}
+  .engage-title{font-size:clamp(24px,6.6vw,38px);}
+
+  /* final cta */
+  .cta{padding:72px var(--pad);}
+  .cta-title{font-size:clamp(30px,9vw,56px);}
+  .cta-copy{font-size:17px;}
+  .cta-marks{display:none;}
+
+  /* footer */
+  .footer{padding:72px var(--pad) 30px;min-height:0;}
+  .footer-big{font-size:clamp(32px,9vw,56px);}
+  .footer-cols{grid-template-columns:1fr 1fr;gap:24px;margin-top:48px;}
+  .footer-bottom{flex-direction:column;align-items:flex-start;gap:22px;margin-top:48px;}
+  .footer-legal{text-align:left;}
+}
+@media(max-width:380px){
+  .footer-cols{grid-template-columns:1fr;}
+  .hero-title{font-size:clamp(26px,8.2vw,40px);}
+}
 @media(max-width:560px){
   .footer-cols{grid-template-columns:1fr;}
 }

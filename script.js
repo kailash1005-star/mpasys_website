@@ -41,6 +41,22 @@ updateHeader();
   document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeNow(); });
 })();
 
+/* ---------- Mobile hamburger menu ---------- */
+(function(){
+  const toggle = document.getElementById('navToggle');
+  const menu = document.getElementById('mobileNav');
+  if(!toggle || !menu) return;
+  function setOpen(open){
+    menu.classList.toggle('open', open);
+    toggle.classList.toggle('active', open);
+    toggle.setAttribute('aria-expanded', open);
+    header.classList.toggle('nav-open', open);
+  }
+  toggle.addEventListener('click', ()=> setOpen(!menu.classList.contains('open')));
+  menu.querySelectorAll('a').forEach(a=> a.addEventListener('click', ()=> setOpen(false)));
+  document.addEventListener('keydown', e=>{ if(e.key==='Escape') setOpen(false); });
+})();
+
 /* ---------- Pause expensive hero bg animation when off-screen ---------- */
 const heroEl = document.querySelector('.hero');
 const heroBg = document.querySelector('.hero-bg');
