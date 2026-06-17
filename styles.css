@@ -196,14 +196,20 @@ section{position:relative;}
 .bm-head{font-size:clamp(24px,2.1vw,32px);font-weight:400;letter-spacing:-.015em;line-height:1.12;color:#0a0a0a;margin-top:64px;max-width:90%;}
 .bm-body{font-size:clamp(15px,1.15vw,18px);font-weight:400;line-height:1.5;color:#2c2c2c;margin-top:auto;padding-top:40px;max-width:94%;}
 .bm-more{display:inline-block;align-self:flex-start;margin-top:26px;font-size:15px;padding:11px 22px;border-radius:9px;background:rgba(0,0,0,.05);color:#5a5a5a;transition:.3s;}
-.bm-card:hover .bm-more{background:rgba(0,0,0,.09);}
-/* active (clicked) states */
-.bm-card.active[data-accent="mauve"]{background:#6b6276;}
-.bm-card.active[data-accent="tan"]{background:#a3866a;}
-.bm-card.active[data-accent="green"]{background:#35684f;}
-.bm-card.active .bm-head,.bm-card.active .bm-body{color:#10100f;}
-.bm-card.active .bm-more{background:#101010;color:#fff;}
-.bm-card.active .bm-icon{color:#3a3450;}
+/* accent colour shows on hover OR click (active) */
+.bm-card.active[data-accent="mauve"],.bm-card[data-accent="mauve"]:hover{background:#6b6276;}
+.bm-card.active[data-accent="tan"],.bm-card[data-accent="tan"]:hover{background:#a3866a;}
+.bm-card.active[data-accent="green"],.bm-card[data-accent="green"]:hover{background:#35684f;}
+.bm-card.active .bm-head,.bm-card.active .bm-body,
+.bm-card:hover .bm-head,.bm-card:hover .bm-body{color:#10100f;}
+.bm-card.active .bm-more,.bm-card:hover .bm-more{background:#101010;color:#fff;}
+.bm-card.active .bm-icon,.bm-card:hover .bm-icon{color:#3a3450;}
+/* while hovering the group, only the hovered card stays coloured (clicked one resets) */
+.benchmark-grid:hover .bm-card.active:not(:hover){background:#f1efee;}
+.benchmark-grid:hover .bm-card.active:not(:hover) .bm-head{color:#0a0a0a;}
+.benchmark-grid:hover .bm-card.active:not(:hover) .bm-body{color:#2c2c2c;}
+.benchmark-grid:hover .bm-card.active:not(:hover) .bm-more{background:rgba(0,0,0,.05);color:#5a5a5a;}
+.benchmark-grid:hover .bm-card.active:not(:hover) .bm-icon{color:#5b5470;}
 
 /* ===================== LABS BENTO ===================== */
 .labs{background:var(--gray-100);padding:0 var(--pad) 130px;}
