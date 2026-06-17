@@ -2,11 +2,11 @@ gsap.registerPlugin(ScrollTrigger);
 
 /* ---------- Header: dark over hero/dark sections, light over light sections ---------- */
 const header = document.getElementById('header');
-const lightSections = ['floats','partners','proven','labs','cta'];
+const lightSections = ['floats','partners','services','industries','labs','cta'];
 function updateHeader(){
   const y = window.scrollY + 70;
   let light = false;
-  document.querySelectorAll('.float-section,.partners,.proven,.labs,.cta').forEach(s=>{
+  document.querySelectorAll('.float-section,.partners,.services,.industries,.labs,.cta').forEach(s=>{
     if(y >= s.offsetTop && y < s.offsetTop + s.offsetHeight) light = true;
   });
   header.classList.toggle('light', light);
@@ -72,14 +72,14 @@ gsap.to('.stat-media',{yPercent:-10, ease:'none', scrollTrigger:{trigger:'.stack
 
   // category, accent color, primary Unsplash photo id + picsum fallback seed
   const cats = [
-    {word:'Research',      color:'tan',   file:'research'},
-    {word:'Medicine',      color:'green', file:'medicine'},
-    {word:'Defense',       color:'tan',   file:'defense'},
-    {word:'Public Sector', color:'green', file:'public'},
-    {word:'Robotics',      color:'tan',   file:'robotics'},
-    {word:'Finance',       color:'tan',   file:'finance'},
-    {word:'Climate',       color:'green', file:'climate'},
-    {word:'Aerospace',     color:'tan',   file:'aerospace'}
+    {word:'Manufacturing',        color:'tan',   file:'robotics'},
+    {word:'Healthcare',           color:'green', file:'medicine'},
+    {word:'Compliance',           color:'tan',   file:'defense'},
+    {word:'B2B Sales',            color:'green', file:'public'},
+    {word:'Logistics',            color:'tan',   file:'aerospace'},
+    {word:'Finance',              color:'tan',   file:'finance'},
+    {word:'Automation',           color:'green', file:'climate'},
+    {word:'Professional Services',color:'tan',   file:'research'}
   ];
   const N = cats.length;
   const BASE = 140;            // base square size (px) at scale 1
@@ -172,6 +172,37 @@ gsap.from('.footer-big',{opacity:0, y:60, duration:1, scrollTrigger:{trigger:'.f
 /* ---------- Smooth scroll for scroll-to-explore ---------- */
 document.querySelector('.scroll-explore').addEventListener('click',()=>{
   window.scrollTo({top:window.innerHeight, behavior:'smooth'});
+});
+
+/* ---------- Service deep-dive tabs ---------- */
+(function(){
+  const tabs = document.querySelectorAll('.svc-tab');
+  const panels = document.querySelectorAll('.svc-panel');
+  if(!tabs.length) return;
+  tabs.forEach(tab=>{
+    tab.addEventListener('click', ()=>{
+      const key = tab.dataset.panel;
+      tabs.forEach(t=> t.classList.toggle('active', t===tab));
+      panels.forEach(p=> p.classList.toggle('active', p.dataset.panel===key));
+      ScrollTrigger.refresh();
+    });
+  });
+})();
+
+/* ---------- Nav: smooth-scroll to in-page sections ---------- */
+document.querySelectorAll('.nav-item[data-scroll]').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    const target = document.getElementById(btn.dataset.scroll);
+    if(!target) return;
+    const y = target.getBoundingClientRect().top + window.scrollY - 60;
+    window.scrollTo({top:y, behavior:'smooth'});
+  });
+});
+
+/* ---------- Reveal-on-scroll for new sections ---------- */
+document.querySelectorAll('.proof-block,.svc-block,.ind-card,.step-card,.cases-title,.services-title,.industries-title,.engage-title').forEach(el=>{
+  el.classList.add('reveal');
+  ScrollTrigger.create({trigger:el, start:'top 90%', onEnter:()=>el.classList.add('in')});
 });
 
 /* ---------- Recalculate trigger positions after async content (images/fonts) loads ---------- */
