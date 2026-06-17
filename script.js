@@ -202,20 +202,14 @@ document.querySelectorAll('.partner-card,.proven-card,.bento-card,.cta-title,.ct
 /* ---------- Footer big text reveal ---------- */
 gsap.from('.footer-big',{opacity:0, y:60, duration:1, scrollTrigger:{trigger:'.footer', start:'top 80%'}});
 
-/* ---------- Benchmark: panel slides up over partners (CSS), cards fade in + click-to-color ---------- */
-(function(){
-  const section = document.getElementById('benchmark');
-  if(!section) return;
-  const cards = gsap.utils.toArray('.bm-card');
-
-  // (the whole white panel slides up over the partners section via CSS sticky —
-  //  the cards rise with it, so no separate scroll animation is needed here)
-
-  // single-select click-to-color (first card active by default)
+/* ---------- Benchmark cards: single-select click-to-color (per section, any page) ---------- */
+document.querySelectorAll('.benchmark-grid').forEach(grid=>{
+  const cards = Array.from(grid.querySelectorAll('.bm-card'));
+  if(!cards.length) return;
   function activate(card){ cards.forEach(c=>c.classList.toggle('active', c===card)); }
   cards.forEach(card=> card.addEventListener('click', ()=> activate(card)));
   activate(cards[0]);
-})();
+});
 
 /* ---------- Smooth scroll for scroll-to-explore ---------- */
 const scrollExplore = document.querySelector('.scroll-explore');
@@ -262,3 +256,23 @@ window.addEventListener('load', ()=> ScrollTrigger.refresh());
 // orbit images shift layout as they decode — refresh once they're in, plus a safety pass
 window.addEventListener('load', ()=> setTimeout(()=> ScrollTrigger.refresh(), 600));
 if(document.fonts && document.fonts.ready){ document.fonts.ready.then(()=> ScrollTrigger.refresh()); }
+
+/* ---------- Cal.com 30-min booking popup, wired into every CTA ---------- */
+(function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+Cal("init", "30min", {origin:"https://app.cal.com"});
+Cal.config = Cal.config || {};
+Cal.config.forwardQueryParams = true;
+Cal.ns["30min"]("ui", {"cssVarsPerTheme":{"dark":{"cal-brand":"#9a6bec"}},"hideEventTypeDetails":false,"layout":"month_view"});
+
+(function(){
+  const cfg = '{"layout":"month_view","useSlotsViewOnSmallScreen":"true","theme":"auto"}';
+  // Turn booking CTAs into Cal pop-ups. Links that literally display the email
+  // address (contain "@") are left as mailto: links.
+  document.querySelectorAll('a[href="mailto:kailash@mpasys.ai"]').forEach(el=>{
+    if(el.textContent.indexOf('@') !== -1) return;
+    el.setAttribute('data-cal-link','mpasys/30min');
+    el.setAttribute('data-cal-namespace','30min');
+    el.setAttribute('data-cal-config', cfg);
+    el.addEventListener('click', e=>{ e.preventDefault(); }); // suppress the mailto fallback; Cal opens the popup
+  });
+})();

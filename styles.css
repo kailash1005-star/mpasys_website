@@ -39,9 +39,12 @@ section{position:relative;}
 .site-header{
   position:fixed;top:0;left:0;right:0;z-index:100;
   transition:background .4s ease,backdrop-filter .4s ease,color .4s ease;
-  color:var(--white);
+  background:rgba(255,255,255,.97);
+  backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  color:var(--black);
+  box-shadow:0 1px 0 rgba(0,0,0,.08);
 }
-.site-header.light{background:rgba(244,244,243,.96);color:var(--black);}
+.site-header.light{background:rgba(255,255,255,.97);color:var(--black);}
 .header-inner{
   max-width:1480px;margin:0 auto;padding:18px var(--pad);
   display:flex;align-items:center;gap:40px;
@@ -49,6 +52,8 @@ section{position:relative;}
 .logo{display:flex;align-items:center;gap:9px;font-weight:600;font-size:22px;}
 .logo-mark{display:block;}
 .logo-word{letter-spacing:-.02em;}
+/* brand logo image: shown exactly as supplied (full colour) on every header state */
+.logo-img{height:26px;width:auto;display:block;}
 .main-nav{display:flex;gap:30px;}
 .nav-item{color:inherit;font-size:15px;font-weight:400;opacity:.95;transition:opacity .2s;}
 .nav-item:hover{opacity:.6;}
@@ -517,7 +522,7 @@ section{position:relative;}
 }
 
 /* ===================== MOBILE NAV (hamburger) ===================== */
-.nav-toggle{display:none;flex-direction:column;justify-content:center;gap:5px;width:42px;height:42px;border:1px solid rgba(255,255,255,.25);border-radius:9px;}
+.nav-toggle{display:none;flex-direction:column;justify-content:center;gap:5px;width:42px;height:42px;border:1px solid rgba(0,0,0,.18);border-radius:9px;}
 .site-header.light .nav-toggle{border-color:rgba(0,0,0,.18);}
 .nav-toggle span{display:block;width:18px;height:2px;background:currentColor;margin:0 auto;border-radius:2px;transition:transform .25s ease,opacity .2s ease;}
 .nav-toggle.active span:nth-child(1){transform:translateY(7px) rotate(45deg);}
@@ -536,6 +541,7 @@ section{position:relative;}
   /* header */
   .header-inner{padding:13px var(--pad);gap:12px;}
   .logo{font-size:19px;}
+  .logo-img{height:22px;}
   .main-nav{display:none;}
   .nav-toggle{display:flex;}
   .btn-demo{font-size:14px;padding:9px 16px;}
