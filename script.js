@@ -6,7 +6,7 @@ const lightSections = ['floats','partners','services','industries','labs','cta']
 function updateHeader(){
   const y = window.scrollY + 70;
   let light = false;
-  document.querySelectorAll('.float-section,.partners,.services,.industries,.labs,.cta').forEach(s=>{
+  document.querySelectorAll('.float-section,.partners,.services,.industries,.labs,.cta,.section-light').forEach(s=>{
     if(y >= s.offsetTop && y < s.offsetTop + s.offsetHeight) light = true;
   });
   header.classList.toggle('light', light);
@@ -14,19 +14,52 @@ function updateHeader(){
 window.addEventListener('scroll', updateHeader, {passive:true});
 updateHeader();
 
-/* ---------- Pause expensive hero bg animation when off-screen ---------- */
-const heroBg = document.querySelector('.hero-bg');
-new IntersectionObserver((entries)=>{
-  entries.forEach(e=> heroBg.classList.toggle('paused', !e.isIntersecting));
-},{threshold:0}).observe(document.querySelector('.hero'));
+/* ---------- Mega menu (hover dropdowns, scale.com style) ---------- */
+(function(){
+  const mega = document.getElementById('mega');
+  if(!mega) return;
+  const panels = mega.querySelectorAll('.mega-panel');
+  const groups = document.querySelectorAll('.nav-group');
+  const plainItems = document.querySelectorAll('.main-nav > a.nav-item');
+  let closeT;
+  function open(menu){
+    clearTimeout(closeT);
+    panels.forEach(p=> p.classList.toggle('active', p.dataset.menu===menu));
+    mega.classList.add('open');
+    header.classList.add('menu-open');
+  }
+  function scheduleClose(){
+    closeT = setTimeout(()=>{ mega.classList.remove('open'); header.classList.remove('menu-open'); }, 130);
+  }
+  function closeNow(){ clearTimeout(closeT); mega.classList.remove('open'); header.classList.remove('menu-open'); }
+  groups.forEach(g=> g.addEventListener('mouseenter', ()=> open(g.dataset.menu)));
+  plainItems.forEach(a=> a.addEventListener('mouseenter', closeNow));
+  header.addEventListener('mouseleave', scheduleClose);
+  mega.addEventListener('mouseenter', ()=> clearTimeout(closeT));
+  mega.addEventListener('mouseleave', scheduleClose);
+  mega.querySelectorAll('a').forEach(a=> a.addEventListener('click', closeNow));
+  document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeNow(); });
+})();
 
-/* ---------- Hero title subtle parallax ---------- */
-gsap.to('.hero-bg', {yPercent:12, ease:'none', scrollTrigger:{trigger:'.hero', start:'top top', end:'bottom top', scrub:true}});
-gsap.to('.hero-content', {yPercent:30, opacity:.2, ease:'none', scrollTrigger:{trigger:'.hero', start:'top top', end:'bottom top', scrub:true}});
+/* ---------- Pause expensive hero bg animation when off-screen ---------- */
+const heroEl = document.querySelector('.hero');
+const heroBg = document.querySelector('.hero-bg');
+if(heroEl && heroBg){
+  new IntersectionObserver((entries)=>{
+    entries.forEach(e=> heroBg.classList.toggle('paused', !e.isIntersecting));
+  },{threshold:0}).observe(heroEl);
+
+  /* ---------- Hero title subtle parallax (home only) ---------- */
+  gsap.to('.hero-bg', {yPercent:12, ease:'none', scrollTrigger:{trigger:'.hero', start:'top top', end:'bottom top', scrub:true}});
+  gsap.to('.hero-content', {yPercent:30, opacity:.2, ease:'none', scrollTrigger:{trigger:'.hero', start:'top top', end:'bottom top', scrub:true}});
+}
 
 /* ---------- Pinned 3D panel stacks ---------- */
 function buildStory(sel){
-  const sticky = document.querySelector(`${sel} .story-sticky`);
+  const root = typeof sel === 'string' ? document.querySelector(sel) : sel;
+  if(!root) return;
+  const sticky = root.querySelector('.story-sticky');
+  if(!sticky) return;
   const panels = sticky.querySelectorAll('.panel');
   const text = sticky.querySelector('.story-text');
 
@@ -38,15 +71,14 @@ function buildStory(sel){
   gsap.set(text,{opacity:0, y:40});
 
   const tl = gsap.timeline({
-    scrollTrigger:{trigger:sel, start:'top top', end:'bottom bottom', scrub:1}
+    scrollTrigger:{trigger:root, start:'top top', end:'bottom bottom', scrub:1}
   });
   tl.to(panels,{opacity:.95, duration:.4, stagger:.06},0)
     .to(panels,{x:(i)=> (i-1)*30, y:(i)=> i*14, rotation:(i)=> -3+i*2, scale:.97, duration:1},0)
     .to(panels,{x:(i)=> (i-1)*10, y:(i)=> i*6, rotation:0, scale:1, duration:1},1)
     .to(text,{opacity:1, y:0, duration:.6},.7);
 }
-buildStory('#story1');
-buildStory('#story2');
+document.querySelectorAll('.story').forEach(buildStory);
 
 /* ---------- 90% progressive word reveal (scrubs over the spacer while the card is pinned) ---------- */
 const words = gsap.utils.toArray('.stat-text .reveal-word');
@@ -170,9 +202,12 @@ gsap.from('.footer-big',{opacity:0, y:60, duration:1, scrollTrigger:{trigger:'.f
 })();
 
 /* ---------- Smooth scroll for scroll-to-explore ---------- */
-document.querySelector('.scroll-explore').addEventListener('click',()=>{
-  window.scrollTo({top:window.innerHeight, behavior:'smooth'});
-});
+const scrollExplore = document.querySelector('.scroll-explore');
+if(scrollExplore){
+  scrollExplore.addEventListener('click',()=>{
+    window.scrollTo({top:window.innerHeight, behavior:'smooth'});
+  });
+}
 
 /* ---------- Service deep-dive tabs ---------- */
 (function(){

@@ -17,21 +17,77 @@
   <!-- ===================== HEADER ===================== -->
   <header class="site-header" id="header">
     <div class="header-inner">
-      <a href="#" class="logo" aria-label="mpasys.ai">
+      <a href="index.html" class="logo" aria-label="mpasys.ai">
         <svg class="logo-mark" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
           <path d="M2 2 L22 2 L2 22 Z" fill="currentColor"/>
         </svg>
         <span class="logo-word">mpasys<span class="logo-accent">.ai</span></span>
       </a>
       <nav class="main-nav">
-        <button class="nav-item" data-scroll="services">Services</button>
-        <button class="nav-item" data-scroll="industries">Industries</button>
-        <button class="nav-item" data-scroll="about">About</button>
-        <button class="nav-item" data-scroll="cases">Case Studies</button>
-        <button class="nav-item" data-scroll="engage">Insights</button>
+        <div class="nav-group" data-menu="services"><button class="nav-item">Services</button></div>
+        <div class="nav-group" data-menu="industries"><button class="nav-item">Industries</button></div>
+        <a class="nav-item" href="about.html">About</a>
+        <a class="nav-item" href="cases.html">Case Studies</a>
+        <div class="nav-group" data-menu="insights"><button class="nav-item">Insights</button></div>
       </nav>
       <div class="header-actions">
         <a href="mailto:kailash@mpasys.ai" class="btn-demo">Talk to Us</a>
+      </div>
+    </div>
+
+    <!-- ===== MEGA MENU ===== -->
+    <div class="mega" id="mega">
+      <!-- Services -->
+      <div class="mega-panel" data-menu="services">
+        <div class="mega-cols">
+          <div class="mega-col">
+            <span class="mega-cat">Build with us</span>
+            <a class="mega-link" href="service-ai.html">AI Consulting &amp; Engineering</a>
+            <a class="mega-link" href="service-zoho.html">Zoho Implementation</a>
+          </div>
+          <div class="mega-col">
+            <span class="mega-cat">Capabilities</span>
+            <a class="mega-link sm" href="service-ai.html#readiness">AI Readiness Assessment</a>
+            <a class="mega-link sm" href="service-ai.html#genai">Generative AI for Operations</a>
+            <a class="mega-link sm" href="service-ai.html#automation">Intelligent Automation</a>
+            <a class="mega-link sm" href="service-zoho.html#crm">Zoho CRM Implementation</a>
+            <a class="mega-link sm" href="service-zoho.html#one">Zoho One Deployment</a>
+          </div>
+        </div>
+        <a class="mega-media" href="service-ai.html" style="background-image:url('images/robotics.jpg')" aria-label="AI Consulting"></a>
+      </div>
+
+      <!-- Industries -->
+      <div class="mega-panel" data-menu="industries">
+        <div class="mega-cols">
+          <div class="mega-col">
+            <span class="mega-cat">By Industry</span>
+            <a class="mega-link sm" href="industry-manufacturing.html">Manufacturing &amp; Mittelstand</a>
+            <a class="mega-link sm" href="industry-logistics.html">Logistics &amp; Supply Chain</a>
+            <a class="mega-link sm" href="industry-finance.html">Finance &amp; Insurance</a>
+          </div>
+          <div class="mega-col">
+            <span class="mega-cat">&nbsp;</span>
+            <a class="mega-link sm" href="industry-professional-services.html">Professional Services</a>
+            <a class="mega-link sm" href="industry-healthcare.html">Healthcare Operations</a>
+            <a class="mega-link sm" href="industry-b2b-sales.html">B2B Sales Organisations</a>
+          </div>
+        </div>
+        <a class="mega-media" href="industry-finance.html" style="background-image:url('images/finance.jpg')" aria-label="Industries"></a>
+      </div>
+
+      <!-- Insights -->
+      <div class="mega-panel" data-menu="insights">
+        <div class="mega-cols">
+          <div class="mega-col wide">
+            <span class="mega-cat">How we engage</span>
+            <a class="mega-link" href="insights.html#understanding">Understanding call — 30 minutes</a>
+            <a class="mega-link" href="insights.html#assessment">Assessment — 1 to 2 weeks</a>
+            <a class="mega-link" href="insights.html#build">Build and deploy — 4 to 8 weeks</a>
+            <a class="mega-link" href="insights.html#handover">Handover and support</a>
+          </div>
+        </div>
+        <a class="mega-media" href="insights.html" style="background-image:url('images/aerospace.jpg')" aria-label="Insights"></a>
       </div>
     </div>
   </header>
@@ -87,30 +143,13 @@
   <section class="story" id="story1">
     <div class="story-sticky">
       <div class="panel-stack" data-stack="1">
-        <div class="panel panel-chart"></div>
-        <div class="panel panel-net"></div>
-        <div class="panel panel-data"></div>
+        <div class="panel" style="background-image:url('images/research.jpg')"></div>
+        <div class="panel" style="background-image:url('images/robotics.jpg')"></div>
+        <div class="panel" style="background-image:url('images/finance.jpg')"></div>
       </div>
       <div class="story-text">
         <h2>AI that works in a boardroom has to be built differently.</h2>
         <p>German businesses are not short of ambition when it comes to AI. What they lack is a partner who takes the compliance, the process complexity, and the operational stakes as seriously as they do. Most vendors hand over a tool. We take ownership of the outcome.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="story" id="story2">
-    <div class="story-sticky">
-      <div class="panel-stack" data-stack="2">
-        <div class="panel panel-schem"></div>
-        <div class="panel panel-schem2"></div>
-        <div class="panel panel-schem3"></div>
-      </div>
-      <div class="story-text">
-        <h2>We do not pitch AI as a revolution. We deliver it as infrastructure.</h2>
-        <p>We operate across two interconnected disciplines: AI consulting and engineering, and Zoho business system implementation. Together they give your organisation what isolated AI tools cannot — a connected, intelligent operating environment your team actually uses every day. Reliable, auditable, and built to last inside the real pressures of your business.</p>
-        <a href="mailto:kailash@mpasys.ai" class="btn-enterprise">Talk to Us
-          <svg viewBox="0 0 24 24" width="16" height="16"><path d="M9 6 L15 12 L9 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
       </div>
     </div>
   </section>
@@ -435,27 +474,27 @@
     <div class="footer-cols">
       <div class="footer-col">
         <span class="footer-col-h">Services</span>
-        <a href="#">AI Consulting &amp; Engineering</a>
-        <a href="#">Zoho CRM Implementation</a>
-        <a href="#">Zoho One Deployment</a>
-        <a href="#">Intelligent Automation</a>
-        <a href="#">AI Readiness Assessment</a>
-        <a href="#">Custom AI Products</a>
+        <a href="service-ai.html">AI Consulting &amp; Engineering</a>
+        <a href="service-zoho.html#crm">Zoho CRM Implementation</a>
+        <a href="service-zoho.html#one">Zoho One Deployment</a>
+        <a href="service-ai.html#automation">Intelligent Automation</a>
+        <a href="service-ai.html#readiness">AI Readiness Assessment</a>
+        <a href="service-ai.html#custom">Custom AI Products</a>
       </div>
       <div class="footer-col">
         <span class="footer-col-h">Industries</span>
-        <a href="#">Manufacturing &amp; Mittelstand</a>
-        <a href="#">Logistics &amp; Supply Chain</a>
-        <a href="#">Finance &amp; Insurance</a>
-        <a href="#">Professional Services</a>
-        <a href="#">Healthcare Operations</a>
-        <a href="#">B2B Sales</a>
+        <a href="industry-manufacturing.html">Manufacturing &amp; Mittelstand</a>
+        <a href="industry-logistics.html">Logistics &amp; Supply Chain</a>
+        <a href="industry-finance.html">Finance &amp; Insurance</a>
+        <a href="industry-professional-services.html">Professional Services</a>
+        <a href="industry-healthcare.html">Healthcare Operations</a>
+        <a href="industry-b2b-sales.html">B2B Sales</a>
       </div>
       <div class="footer-col">
         <span class="footer-col-h">Company</span>
-        <a href="#">About mpasys.ai</a>
-        <a href="#">Case Studies</a>
-        <a href="#">Insights</a>
+        <a href="about.html">About</a>
+        <a href="cases.html">Case Studies</a>
+        <a href="insights.html">Insights</a>
         <a href="mailto:kailash@mpasys.ai">Contact</a>
       </div>
       <div class="footer-col">
