@@ -138,9 +138,11 @@ section{position:relative;}
 
 @media (hover:none),(pointer:coarse){
   .hero-scrub{height:auto;}
-  .hero-scrub .hero{position:relative;height:auto;min-height:auto;display:block;padding:120px 0 72px;}
-  .hero-content{position:static;display:flex;flex-direction:column;gap:56px;}
-  .hero-phase{position:static;opacity:1;transform:none;pointer-events:auto;padding:0;display:block;}
+  .hero-scrub .hero{position:relative;height:auto;min-height:auto;display:block;padding:120px 0 72px;overflow:visible;}
+  /* 3-class selector: must outrank the later `.hero-scrub .hero-content{position:absolute}`
+     desktop rule, or the stacked mobile hero collapses and clips (real-device bug) */
+  .hero-scrub .hero .hero-content{position:static;display:flex;flex-direction:column;gap:56px;padding:0 var(--pad);max-width:100%;margin:0;}
+  .hero-scrub .hero .hero-phase{position:static;opacity:1;transform:none;pointer-events:auto;padding:0;display:block;}
   /* on phones the scrub headline shrinks so the stacked phases read as a clean list */
   .hero-phase .hero-title{font-size:clamp(26px,7.4vw,40px);}
   .hero-phase:not([data-phase="0"]) .hero-title{font-size:clamp(24px,6.6vw,34px);}
@@ -638,9 +640,10 @@ section{position:relative;}
 .nav-toggle.active span:nth-child(1){transform:translateY(7px) rotate(45deg);}
 .nav-toggle.active span:nth-child(2){opacity:0;}
 .nav-toggle.active span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
-.mobile-nav{display:none;flex-direction:column;background:#0a0a0a;border-top:1px solid rgba(255,255,255,.08);}
+.mobile-nav{display:none;flex-direction:column;background:#0a0a0a;border-top:1px solid rgba(255,255,255,.08);max-height:calc(100vh - 62px);overflow-y:auto;}
 .mobile-nav.open{display:flex;}
-.mobile-nav a{color:#fff;font-size:16px;padding:16px var(--pad);border-bottom:1px solid rgba(255,255,255,.07);}
+.mobile-nav .mnav-cat{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.42);padding:18px var(--pad) 8px;}
+.mobile-nav a{color:#fff;font-size:16px;padding:14px var(--pad);border-bottom:1px solid rgba(255,255,255,.07);}
 .mobile-nav a:active{background:rgba(255,255,255,.06);}
 .mobile-nav .mobile-cta{background:var(--brand-grad);color:#fff;border:none;font-weight:500;text-align:center;margin:14px var(--pad) 20px;border-radius:10px;padding:14px;}
 .site-header.nav-open{background:#0a0a0a;color:#fff;}
