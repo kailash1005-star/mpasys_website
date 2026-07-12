@@ -123,12 +123,10 @@ if(heroEl && heroBg){
   }
 
   if(canScrub){
+    // the all-keyframe scrub master is already the <source> — no src swap, no double download
     heroVideo.removeAttribute('autoplay');
     heroVideo.removeAttribute('loop');
-    heroVideo.setAttribute('preload','auto');
     heroVideo.muted = true;
-    heroVideo.src = 'Videos/transformer-hero-scrub.mp4?v=2';   // every frame a keyframe (v2: 1080p master)
-    heroVideo.load();
     // A paused, never-played video often won't buffer/decode frames (readyState
     // stays at 1), which freezes seeking on frame 0. Kick it once data lands:
     // play → pause primes the decoder; the rAF then drives it back to frame 0.
