@@ -136,17 +136,14 @@ section{position:relative;}
 .hero-phase[data-phase="0"]{opacity:1;pointer-events:auto;}
 .hero-phase:not([data-phase="0"]) .hero-title{font-size:clamp(30px,4.4vw,58px);}
 
-@media (hover:none),(pointer:coarse){
-  .hero-scrub{height:auto;}
-  .hero-scrub .hero{position:relative;height:auto;min-height:auto;display:block;padding:120px 0 72px;overflow:visible;}
-  /* 3-class selector: must outrank the later `.hero-scrub .hero-content{position:absolute}`
-     desktop rule, or the stacked mobile hero collapses and clips (real-device bug) */
-  .hero-scrub .hero .hero-content{position:static;display:flex;flex-direction:column;gap:56px;padding:0 var(--pad);max-width:100%;margin:0;}
-  .hero-scrub .hero .hero-phase{position:static;opacity:1;transform:none;pointer-events:auto;padding:0;display:block;}
-  /* on phones the scrub headline shrinks so the stacked phases read as a clean list */
-  .hero-phase .hero-title{font-size:clamp(26px,7.4vw,40px);}
-  .hero-phase:not([data-phase="0"]) .hero-title{font-size:clamp(24px,6.6vw,34px);}
-  .hero-overlay{background:linear-gradient(180deg,rgba(4,7,16,.74),rgba(4,7,16,.82));}
+/* Phones run the same pinned scroll-scrub hero as desktop — one experience everywhere.
+   Shorter pin (fewer thumb-swipes per phase) and svh so iOS toolbar collapse can't
+   cause a mid-scrub height jump. */
+@media(max-width:700px){
+  .hero-scrub{height:520vh;}
+  .hero{height:100vh;height:100svh;min-height:0;}
+  .hero-phase .hero-title{font-size:clamp(27px,7.8vw,42px);}
+  .hero-phase:not([data-phase="0"]) .hero-title{font-size:clamp(24px,7vw,36px);}
 }
 .hero-bg{
   position:absolute;inset:0;

@@ -20,6 +20,9 @@
 })();
 
 gsap.registerPlugin(ScrollTrigger);
+// iOS/Android: ignore the viewport-height jitter from the browser toolbar
+// collapsing mid-scroll — otherwise pinned scrub sections stutter/re-measure.
+ScrollTrigger.config({ignoreMobileResize:true});
 
 /* ---------- Header: dark over hero/dark sections, light over light sections ---------- */
 const header = document.getElementById('header');
@@ -39,7 +42,7 @@ updateHeader();
    Set the hidden/glass state immediately (before ScrollTrigger wires up) to avoid a flash of
    the solid bar. The reveal itself is driven from the hero scrub progress further below. */
 const heroScrubEl = document.getElementById('heroScrub');
-const heroCanScrub = heroScrubEl && !window.matchMedia('(hover: none), (pointer: coarse)').matches;
+const heroCanScrub = !!heroScrubEl;   // all devices — phones scrub too
 function setHeaderReveal(p){
   const r = Math.max(0, Math.min(1, (p - 0.03) / 0.72));   // hidden at top → fully in ~75% through
   header.style.opacity = r;
@@ -106,10 +109,10 @@ if(heroEl && heroBg){
      The hero pins for the wrapper's height while the video's frames follow the
      scrollbar — scroll drives currentTime (all-keyframe encode = instant seeks),
      an rAF lerp smooths the playhead, and the content cross-fades through phases.
-     Touch devices skip the scrub and keep the ambient autoplay loop. */
+     Runs on every device — phones get the same pinned scrub experience. */
   const heroVideo = document.querySelector('.hero-video');
   const heroScrub = document.getElementById('heroScrub');
-  const canScrub = heroVideo && heroScrub && !window.matchMedia('(hover: none), (pointer: coarse)').matches;
+  const canScrub = !!(heroVideo && heroScrub);
 
   // First-paint entrance: eyebrow → headline → sub → CTAs rise in sequence over
   // ~1.5s. Children only — phase-level opacity stays owned by the scrub timeline.
@@ -182,7 +185,6 @@ if(heroEl && heroBg){
       }
     });
   }
-  // Touch devices: phases render as a static stacked hero (CSS), video loops ambiently.
 }
 
 /* ---------- Pinned 3D panel stacks ---------- */
