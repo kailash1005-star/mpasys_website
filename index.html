@@ -21,14 +21,13 @@
         <img src="images/mpasys-logo.png" alt="mpasys" class="logo-img" />
       </a>
       <nav class="main-nav">
-        <div class="nav-group" data-menu="services"><button class="nav-item">Services</button></div>
-        <div class="nav-group" data-menu="industries"><button class="nav-item">Industries</button></div>
-        <a class="nav-item" href="about.html">About</a>
-        <a class="nav-item" href="cases.html">Case Studies</a>
-        <div class="nav-group" data-menu="insights"><button class="nav-item">Insights</button></div>
+        <div class="nav-group" data-menu="services"><button class="nav-item" data-de="Leistungen">Services</button></div>
+        <div class="nav-group" data-menu="industries"><button class="nav-item" data-de="Branchen">Industries</button></div>
+        <a class="nav-item" href="about.html" data-de="Über uns">About</a>
       </nav>
       <div class="header-actions">
-        <a href="mailto:kailash@mpasys.ai" class="btn-demo">Talk to Us</a>
+        <button class="lang-toggle" id="langToggle" aria-label="Switch language">DE</button>
+        <a href="mailto:kailash@mpasys.ai" class="btn-demo" data-de="Gespräch vereinbaren">Talk to Us</a>
         <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
           <span></span><span></span><span></span>
         </button>
@@ -37,13 +36,11 @@
 
     <!-- ===== MOBILE MENU ===== -->
     <nav class="mobile-nav" id="mobileNav">
-      <a href="service-ai.html">AI Consulting &amp; Engineering</a>
-      <a href="service-zoho.html">Zoho Implementation</a>
-      <a href="industry-manufacturing.html">Industries</a>
-      <a href="about.html">About</a>
-      <a href="cases.html">Case Studies</a>
-      <a href="insights.html">Insights</a>
-      <a href="mailto:kailash@mpasys.ai" class="mobile-cta">Talk to Us</a>
+      <a href="service-ai.html" data-de="KI-Beratung &amp; Engineering">AI Consulting &amp; Engineering</a>
+      <a href="service-zoho.html" data-de="Zoho-Implementierung">Zoho Implementation</a>
+      <a href="industry-manufacturing.html" data-de="Branchen">Industries</a>
+      <a href="about.html" data-de="Über uns">About</a>
+      <a href="mailto:kailash@mpasys.ai" class="mobile-cta" data-de="Gespräch vereinbaren">Talk to Us</a>
     </nav>
 
     <!-- ===== MEGA MENU ===== -->
@@ -52,17 +49,18 @@
       <div class="mega-panel" data-menu="services">
         <div class="mega-cols">
           <div class="mega-col">
-            <span class="mega-cat">Build with us</span>
-            <a class="mega-link" href="service-ai.html">AI Consulting &amp; Engineering</a>
-            <a class="mega-link" href="service-zoho.html">Zoho Implementation</a>
+            <span class="mega-cat" data-de="Mit uns umsetzen">Build with us</span>
+            <a class="mega-link" href="service-ai.html" data-de="KI-Beratung &amp; Engineering">AI Consulting &amp; Engineering</a>
+            <a class="mega-link" href="service-zoho.html" data-de="Zoho-Implementierung">Zoho Implementation</a>
           </div>
           <div class="mega-col">
-            <span class="mega-cat">Capabilities</span>
-            <a class="mega-link sm" href="service-ai.html#readiness">AI Readiness Assessment</a>
-            <a class="mega-link sm" href="service-ai.html#genai">Generative AI for Operations</a>
-            <a class="mega-link sm" href="service-ai.html#automation">Intelligent Automation</a>
-            <a class="mega-link sm" href="service-zoho.html#crm">Zoho CRM Implementation</a>
-            <a class="mega-link sm" href="service-zoho.html#one">Zoho One Deployment</a>
+            <span class="mega-cat" data-de="Kompetenzen">Capabilities</span>
+            <a class="mega-link sm" href="service-ai.html#readiness" data-de="AI-Readiness-Assessment">AI Readiness Assessment</a>
+            <a class="mega-link sm" href="service-ai.html#data" data-de="Datenfundament für KI">Data Foundations</a>
+            <a class="mega-link sm" href="service-ai.html#genai" data-de="Generative KI im Betrieb">Generative AI for Operations</a>
+            <a class="mega-link sm" href="service-ai.html#automation" data-de="Intelligente Automatisierung">Intelligent Automation</a>
+            <a class="mega-link sm" href="service-zoho.html#crm" data-de="Zoho-CRM-Implementierung">Zoho CRM Implementation</a>
+            <a class="mega-link sm" href="service-zoho.html#one" data-de="Zoho-One-Einführung">Zoho One Deployment</a>
           </div>
         </div>
         <a class="mega-media" href="service-ai.html" style="background-image:url('images/robotics.jpg')" aria-label="AI Consulting"></a>
@@ -72,114 +70,106 @@
       <div class="mega-panel" data-menu="industries">
         <div class="mega-cols">
           <div class="mega-col">
-            <span class="mega-cat">By Industry</span>
-            <a class="mega-link sm" href="industry-manufacturing.html">Manufacturing &amp; Mittelstand</a>
-            <a class="mega-link sm" href="industry-logistics.html">Logistics &amp; Supply Chain</a>
-            <a class="mega-link sm" href="industry-finance.html">Finance &amp; Insurance</a>
+            <span class="mega-cat" data-de="Nach Branche">By Industry</span>
+            <a class="mega-link sm" href="industry-manufacturing.html" data-de="Fertigung &amp; Mittelstand">Manufacturing &amp; Mittelstand</a>
+            <a class="mega-link sm" href="industry-logistics.html" data-de="Logistik &amp; Supply Chain">Logistics &amp; Supply Chain</a>
           </div>
           <div class="mega-col">
             <span class="mega-cat">&nbsp;</span>
-            <a class="mega-link sm" href="industry-professional-services.html">Professional Services</a>
-            <a class="mega-link sm" href="industry-healthcare.html">Healthcare Operations</a>
-            <a class="mega-link sm" href="industry-b2b-sales.html">B2B Sales Organisations</a>
+            <a class="mega-link sm" href="industry-finance.html" data-de="Finanzen &amp; Versicherung">Finance &amp; Insurance</a>
+            <a class="mega-link sm" href="industry-healthcare.html" data-de="Gesundheitswesen">Healthcare Operations</a>
           </div>
         </div>
         <a class="mega-media" href="industry-finance.html" style="background-image:url('images/finance.jpg')" aria-label="Industries"></a>
       </div>
-
-      <!-- Insights -->
-      <div class="mega-panel" data-menu="insights">
-        <div class="mega-cols">
-          <div class="mega-col wide">
-            <span class="mega-cat">How we engage</span>
-            <a class="mega-link" href="insights.html#understanding">Understanding call — 30 minutes</a>
-            <a class="mega-link" href="insights.html#assessment">Assessment — 1 to 2 weeks</a>
-            <a class="mega-link" href="insights.html#build">Build and deploy — 4 to 8 weeks</a>
-            <a class="mega-link" href="insights.html#handover">Handover and support</a>
-          </div>
-        </div>
-        <a class="mega-media" href="insights.html" style="background-image:url('images/aerospace.jpg')" aria-label="Insights"></a>
-      </div>
     </div>
   </header>
 
-  <!-- ===================== HERO ===================== -->
+  <!-- ===================== HERO (pinned; video frames scrub with scroll) ===================== -->
+  <div class="hero-scrub" id="heroScrub">
   <section class="hero" id="hero">
     <div class="hero-bg" aria-hidden="true"></div>
-    <video class="hero-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true">
-      <source src="Videos/kling-web.mp4" type="video/mp4" />
+    <video class="hero-video" autoplay muted loop playsinline preload="auto" poster="images/hero-poster.jpg" aria-hidden="true">
+      <source src="Videos/transformer-hero.mp4" type="video/mp4" />
     </video>
     <div class="hero-overlay" aria-hidden="true"></div>
     <div class="hero-content">
-      <span class="hero-eyebrow">Enterprise AI Adoption · Germany</span>
-      <h1 class="hero-title">Most AI projects stall.<br/>Ours go live.</h1>
-      <p class="hero-sub">mpasys.ai helps German companies move from AI exploration to AI operation — with systems built to work inside your business, not around it. GDPR-compliant. Zoho-certified. No exceptions.</p>
-      <div class="hero-cta-row">
-        <a href="insights.html" class="btn-hero">See How We Work</a>
-        <a href="mailto:kailash@mpasys.ai" class="btn-hero-ghost">Or talk to us directly — kailash@mpasys.ai</a>
+      <div class="hero-phase" data-phase="0">
+        <span class="hero-eyebrow" data-de="KI-Adoption für Unternehmen · Deutschland">Enterprise AI Adoption · Germany</span>
+        <h1 class="hero-title" data-de="Die meisten KI-Projekte stocken.&lt;br/&gt;Unsere &lt;em class=&quot;hero-accent&quot;&gt;gehen live&lt;/em&gt;.">Most AI projects stall.<br/>Ours <em class="hero-accent">go live</em>.</h1>
+        <p class="hero-sub" data-de="Wir bringen deutsche Unternehmen vom KI-Reden zu KI in Produktion — gebaut in Ihrem Unternehmen. DSGVO-konform. Zoho-zertifiziert.">We take German companies from AI talk to AI in production — built inside your business. GDPR-compliant. Zoho-certified.</p>
+        <div class="hero-cta-row">
+          <a href="about.html" class="btn-hero" data-de="So arbeiten wir">See How We Work</a>
+          <a href="mailto:kailash@mpasys.ai" class="btn-hero-ghost" data-de="Oder direkt: kailash@mpasys.ai">Or talk to us directly — kailash@mpasys.ai</a>
+        </div>
+      </div>
+
+      <div class="hero-phase" data-phase="1">
+        <span class="hero-eyebrow" data-de="Der Unterschied">The difference</span>
+        <h2 class="hero-title" data-de="KI, die im Vorstand besteht,&lt;br/&gt;muss &lt;em class=&quot;hero-accent&quot;&gt;anders gebaut&lt;/em&gt; sein.">AI that works in a boardroom<br/>has to be <em class="hero-accent">built differently</em>.</h2>
+        <p class="hero-sub" data-de="Deutschen Unternehmen fehlt keine KI-Ambition — es fehlt ein Partner, der Compliance und operative Risiken so ernst nimmt wie sie. Wir verantworten das Ergebnis, nicht nur das Tool.">German firms don't lack AI ambition — they lack a partner who takes compliance and operational stakes as seriously as they do. We own the outcome, not just the tool.</p>
+      </div>
+
+      <div class="hero-phase" data-phase="2">
+        <span class="hero-eyebrow" data-de="Gebaut, um zu bleiben">Built to last</span>
+        <h2 class="hero-title" data-de="Der echte Test ist nicht der Launch.&lt;br/&gt;Sondern ob Ihr Team es &lt;em class=&quot;hero-accent&quot;&gt;weiter nutzt&lt;/em&gt;.">The real test isn&apos;t the launch.<br/>It&apos;s whether your team <em class="hero-accent">still uses it</em>.</h2>
+        <p class="hero-sub" data-de="Viel KI beeindruckt in der Demo und verschwindet bis zum nächsten Quartal. Wir gestalten von Tag eins für Adoption — damit das System sich seinen Platz lange nach dem Go-live verdient.">Plenty of AI impresses in a demo and disappears by next quarter. We design for adoption from day one, so the system keeps earning its place long after go-live.</p>
+      </div>
+
+      <div class="hero-phase" data-phase="3">
+        <span class="hero-eyebrow" data-de="Zwei Disziplinen, ein Team">Two disciplines, one team</span>
+        <h2 class="hero-title" data-de="KI und Zoho, konstruiert&lt;br/&gt;als &lt;em class=&quot;hero-accent&quot;&gt;ein System&lt;/em&gt;.">AI and Zoho, engineered<br/>to work as <em class="hero-accent">one system</em>.</h2>
+        <p class="hero-sub" data-de="Die meisten Partner lösen entweder Ihr CRM oder Ihre KI. Wir tun beides — intelligente Workflows in genau der Umgebung, die Ihr Team täglich nutzt.">Most partners fix either your CRM or your AI. We do both — intelligent workflows inside the same environment your team already uses every day.</p>
+      </div>
+
+      <div class="hero-phase" data-phase="4">
+        <span class="hero-eyebrow" data-de="Wochen, nicht Quartale">Weeks, not quarters</span>
+        <h2 class="hero-title" data-de="Vom &lt;em class=&quot;hero-accent&quot;&gt;ersten Gespräch&lt;/em&gt; zu einem System,&lt;br/&gt;das Ihr Team wirklich nutzt.">From <em class="hero-accent">first call</em> to a system<br/>your team actually uses.</h2>
+        <p class="hero-sub" data-de="Ein 30-Minuten-Gespräch, ein ehrliches Assessment, dann Build und Deployment in vier bis acht Wochen — mit Ihren Leuten im Raum. In Produktion, nicht ins Regal.">A 30-minute call, an honest assessment, then build and deploy in four to eight weeks — with your people in the room. To production, not a shelf.</p>
+      </div>
+
+      <div class="hero-phase" data-phase="5">
+        <span class="hero-eyebrow" data-de="DSGVO-nativ · EU AI Act ready · Autorisierter Zoho-Partner">GDPR-native · EU AI Act ready · Authorized Zoho Partner</span>
+        <h2 class="hero-title" data-de="Bauen wir KI, die &lt;em class=&quot;hero-accent&quot;&gt;in einem Jahr&lt;/em&gt;&lt;br/&gt;noch läuft.">Let&apos;s build AI that&apos;s still running<br/><em class="hero-accent">a year from now</em>.</h2>
+        <p class="hero-sub" data-de="15+ Enterprise-Projekte über KI und Zoho hinweg. Wenn KI-Adoption dieses Jahr auf Ihrer Agenda steht, nehmen Sie sich 30 Minuten mit uns, bevor Sie einen Partner wählen.">15+ enterprise projects delivered across AI and Zoho. If AI adoption is on your agenda this year, take 30 minutes with us before you choose a partner.</p>
+        <div class="hero-cta-row">
+          <a href="mailto:kailash@mpasys.ai" class="btn-hero" data-de="30-Minuten-Gespräch buchen">Book a 30-Minute Call</a>
+          <a href="about.html" class="btn-hero-ghost" data-de="So arbeiten wir →">See how we work →</a>
+        </div>
       </div>
     </div>
     <div class="scroll-explore">
-      <span>Scroll to explore</span>
+      <span data-de="Scrollen Sie weiter">Scroll to explore</span>
       <span class="scroll-arrow" aria-hidden="true">
         <svg viewBox="0 0 24 24" width="16" height="16"><path d="M12 4 V20 M6 14 L12 20 L18 14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </span>
     </div>
   </section>
+  </div><!-- /hero-scrub -->
 
   <!-- ===================== SOCIAL PROOF TICKER ===================== -->
   <section class="ticker" aria-label="Proof points">
     <div class="ticker-track">
       <span class="ticker-set">
-        <span class="ti">15+ Enterprise Projects Delivered</span><span class="td">·</span>
-        <span class="ti">Authorized Zoho Partner</span><span class="td">·</span>
-        <span class="ti">GDPR-Compliant by Architecture</span><span class="td">·</span>
-        <span class="ti">EU AI Act Implementation Ready</span><span class="td">·</span>
-        <span class="ti">AI Systems That Stay in Production</span><span class="td">·</span>
-        <span class="ti">Zero Vendor Lock-In Model</span><span class="td">·</span>
-        <span class="ti">German Market. Indian Engineering Depth.</span><span class="td">·</span>
-        <span class="ti">Deployed. Not Just Demoed.</span><span class="td">·</span>
+        <span class="ti" data-de="15+ Enterprise-Projekte geliefert">15+ Enterprise Projects Delivered</span><span class="td">·</span>
+        <span class="ti" data-de="Autorisierter Zoho-Partner">Authorized Zoho Partner</span><span class="td">·</span>
+        <span class="ti" data-de="DSGVO-konform per Architektur">GDPR-Compliant by Architecture</span><span class="td">·</span>
+        <span class="ti" data-de="Bereit für den EU AI Act">EU AI Act Implementation Ready</span><span class="td">·</span>
+        <span class="ti" data-de="KI-Systeme, die in Produktion bleiben">AI Systems That Stay in Production</span><span class="td">·</span>
+        <span class="ti" data-de="Kein Vendor-Lock-in">Zero Vendor Lock-In Model</span><span class="td">·</span>
+        <span class="ti" data-de="Deutscher Markt. Indische Engineering-Tiefe.">German Market. Indian Engineering Depth.</span><span class="td">·</span>
+        <span class="ti" data-de="Deployed. Nicht nur demonstriert.">Deployed. Not Just Demoed.</span><span class="td">·</span>
       </span>
       <span class="ticker-set" aria-hidden="true">
-        <span class="ti">15+ Enterprise Projects Delivered</span><span class="td">·</span>
-        <span class="ti">Authorized Zoho Partner</span><span class="td">·</span>
-        <span class="ti">GDPR-Compliant by Architecture</span><span class="td">·</span>
-        <span class="ti">EU AI Act Implementation Ready</span><span class="td">·</span>
-        <span class="ti">AI Systems That Stay in Production</span><span class="td">·</span>
-        <span class="ti">Zero Vendor Lock-In Model</span><span class="td">·</span>
-        <span class="ti">German Market. Indian Engineering Depth.</span><span class="td">·</span>
-        <span class="ti">Deployed. Not Just Demoed.</span><span class="td">·</span>
+        <span class="ti" data-de="15+ Enterprise-Projekte geliefert">15+ Enterprise Projects Delivered</span><span class="td">·</span>
+        <span class="ti" data-de="Autorisierter Zoho-Partner">Authorized Zoho Partner</span><span class="td">·</span>
+        <span class="ti" data-de="DSGVO-konform per Architektur">GDPR-Compliant by Architecture</span><span class="td">·</span>
+        <span class="ti" data-de="Bereit für den EU AI Act">EU AI Act Implementation Ready</span><span class="td">·</span>
+        <span class="ti" data-de="KI-Systeme, die in Produktion bleiben">AI Systems That Stay in Production</span><span class="td">·</span>
+        <span class="ti" data-de="Kein Vendor-Lock-in">Zero Vendor Lock-In Model</span><span class="td">·</span>
+        <span class="ti" data-de="Deutscher Markt. Indische Engineering-Tiefe.">German Market. Indian Engineering Depth.</span><span class="td">·</span>
+        <span class="ti" data-de="Deployed. Nicht nur demonstriert.">Deployed. Not Just Demoed.</span><span class="td">·</span>
       </span>
-    </div>
-  </section>
-
-  <!-- ===================== PINNED 3D PANEL STORY ===================== -->
-  <section class="story" id="story1">
-    <div class="story-sticky">
-      <div class="panel-stack" data-stack="1">
-        <div class="panel" style="background-image:url('images/research.jpg')"></div>
-        <div class="panel" style="background-image:url('images/robotics.jpg')"></div>
-        <div class="panel" style="background-image:url('images/finance.jpg')"></div>
-      </div>
-      <div class="story-text">
-        <h2>AI that works in a boardroom has to be built differently.</h2>
-        <p>German businesses are not short of ambition when it comes to AI. What they lack is a partner who takes the compliance, the process complexity, and the operational stakes as seriously as they do. Most vendors hand over a tool. We take ownership of the outcome.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===================== PINNED 3D PANEL STORY (2) ===================== -->
-  <section class="story" id="story2">
-    <div class="story-sticky">
-      <div class="panel-stack" data-stack="2">
-        <div class="panel" style="background-image:url('images/public.jpg')"></div>
-        <div class="panel" style="background-image:url('images/climate.jpg')"></div>
-        <div class="panel" style="background-image:url('images/aerospace.jpg')"></div>
-      </div>
-      <div class="story-text">
-        <h2>The real test isn't the launch. It's whether your team still uses it six months later.</h2>
-        <p>Plenty of AI systems impress in a demo and quietly fall out of use by the next quarter. We design for adoption from day one — building tools that fit how your people already work, so the system keeps earning its place long after go-live, not just on launch day.</p>
-      </div>
     </div>
   </section>
 
@@ -192,7 +182,7 @@
     <div class="stat-sticky">
       <div class="stat-media" aria-hidden="true"></div>
       <div class="stat-card">
-        <p class="stat-text">
+        <p class="stat-text" data-de="<span class=&quot;hl&quot;><b>100%</b> der</span> <span class=&quot;reveal-word&quot;>Systeme,</span> <span class=&quot;reveal-word&quot;>die</span> <span class=&quot;reveal-word&quot;>wir</span> <span class=&quot;reveal-word&quot;>bauen,</span> <span class=&quot;reveal-word&quot;>sind</span> <span class=&quot;reveal-word&quot;>DSGVO-konform</span> <span class=&quot;reveal-word&quot;>by</span> <span class=&quot;reveal-word&quot;>Design.</span> <span class=&quot;reveal-word&quot;>Ohne</span> <span class=&quot;reveal-word&quot;>Ausnahme.</span>">
           <span class="hl"><b>100%</b> of</span>
           <span class="reveal-word">every</span> <span class="reveal-word">system</span>
           <span class="reveal-word">we</span> <span class="reveal-word">build</span> <span class="reveal-word">is</span>
@@ -209,18 +199,41 @@
     <div class="orbit-stage">
       <div class="orbit" id="orbit" aria-hidden="true"></div>
       <div class="float-center">
-        <h2 class="float-title">Enterprise AI<br/>Built for <span class="real-word" id="realWord">Manufacturing</span></h2>
-        <a href="mailto:kailash@mpasys.ai" class="btn-pill">Talk to Us</a>
+        <h2 class="float-title" data-de="Enterprise-KI&lt;br/&gt;gebaut für &lt;span class=&quot;real-word&quot; id=&quot;realWord&quot;&gt;Manufacturing&lt;/span&gt;">Enterprise AI<br/>Built for <span class="real-word" id="realWord">Manufacturing</span></h2>
+        <a href="mailto:kailash@mpasys.ai" class="btn-pill" data-de="Gespräch vereinbaren">Talk to Us</a>
       </div>
     </div>
   </section>
   </div><!-- /stack-stat -->
 
+  <!-- ===================== DATA FOUNDATIONS ===================== -->
+  <section class="industries section-light" id="data-foundations">
+    <div class="industries-head">
+      <span class="services-eyebrow" style="display:block;margin-bottom:12px;" data-de="Das Datenfundament">Data foundations</span>
+      <h2 class="industries-title" data-de="KI-Adoption beginnt nicht beim Modell. Sie beginnt bei Ihren Daten.">AI adoption doesn't start with models. It starts with your data.</h2>
+      <p class="industries-sub" data-de="Die Systeme, die in Produktion überleben, stehen auf Daten, die strukturiert, geführt und konform sind. Diese Grundarbeit ist Teil jedes Projekts — kein optionales Extra.">The systems that survive in production are built on data that is structured, governed and compliant. That groundwork is part of every engagement — not an optional extra.</p>
+    </div>
+    <div class="industries-grid">
+      <article class="ind-card">
+        <h3 data-de="Data Readiness">Data readiness</h3>
+        <p data-de="Wir prüfen, was Sie haben — wo es liegt, in welchem Zustand es ist und was es heute schon tragen kann — bevor irgendjemand über Modelle spricht.">We audit what you have — where it lives, what shape it is in, and what it can already support — before anyone talks about models.</p>
+      </article>
+      <article class="ind-card">
+        <h3 data-de="Struktur &amp; Governance">Structure &amp; governance</h3>
+        <p data-de="Saubere Pipelines, klare Verantwortung und Zugriffsregeln, die Ihre Compliance freigeben kann — die leise Arbeit, die KI zuverlässig hält.">Clean pipelines, clear ownership and access rules your compliance team can sign off — the quiet work that keeps AI reliable.</p>
+      </article>
+      <article class="ind-card">
+        <h3 data-de="Konform per Architektur">Compliant by architecture</h3>
+        <p data-de="DSGVO- und EU-AI-Act-Anforderungen sind von Anfang an in die Datenebene eingebaut — nichts muss später unter Druck nachgerüstet werden.">GDPR and EU AI Act requirements are designed into the data layer from the start, so nothing needs retrofitting under pressure.</p>
+      </article>
+    </div>
+  </section>
+
   <!-- ===================== GERMAN MARKET / BENTO ===================== -->
   <section class="labs" id="about">
-    <h2 class="labs-title">Built for the German market from the start.</h2>
+    <h2 class="labs-title" data-de="Von Anfang an für den deutschen Markt gebaut.">Built for the German market from the start.</h2>
     <div class="bento">
-      <article class="bento-card b-capitol"><div class="bento-img img-capitol"></div><span class="bento-tag">GDPR-NATIVE</span></article>
+      <article class="bento-card b-capitol"><div class="bento-img img-capitol"></div><span class="bento-tag" data-de="DSGVO-NATIV">GDPR-NATIVE</span></article>
       <article class="bento-card b-ms">
         <div class="ms-logo">
           <svg class="logo-mark dark" viewBox="0 0 24 24" width="20" height="20"><path d="M2 2 L22 2 L2 22 Z" fill="currentColor"/></svg>
@@ -237,12 +250,12 @@
       </article>
       <article class="bento-card b-board">
         <div class="leaderboard">
-          <div class="lb-head">Why German enterprises choose mpasys.ai</div>
-          <div class="lb-sub">We did not build a German-language version of a global product. We built mpasys.ai for the German market — GDPR is real, the Betriebsrat matters, the procurement cycle is longer. These are not obstacles. They are the environment we work in.</div>
-          <div class="lb-row"><span class="lb-rank">✓</span><span class="lb-name">GDPR-Native</span><span class="lb-bar"><i style="width:100%"></i></span><span class="lb-score">Day one</span></div>
-          <div class="lb-row"><span class="lb-rank">✓</span><span class="lb-name">EU AI Act</span><span class="lb-bar"><i style="width:92%;background:#7B5EA7"></i></span><span class="lb-score">Ready</span></div>
-          <div class="lb-row"><span class="lb-rank">✓</span><span class="lb-name">Mittelstand</span><span class="lb-bar"><i style="width:88%;background:#9B4FD8"></i></span><span class="lb-score">Understood</span></div>
-          <a href="mailto:kailash@mpasys.ai" class="lb-link">Talk to Us →</a>
+          <div class="lb-head" data-de="Warum deutsche Unternehmen mpasys.ai wählen">Why German enterprises choose mpasys.ai</div>
+          <div class="lb-sub" data-de="Wir haben keine deutschsprachige Version eines globalen Produkts gebaut. Wir haben mpasys.ai für den deutschen Markt gebaut — die DSGVO ist real, der Betriebsrat zählt, der Beschaffungszyklus ist länger. Das sind keine Hindernisse. Das ist unser Arbeitsumfeld.</div>
+          <div class="lb-row"><span class="lb-rank">✓</span><span class="lb-name" data-de="DSGVO-nativ">GDPR-Native</span><span class="lb-bar"><i style="width:100%"></i></span><span class="lb-score" data-de="Tag eins">Day one</span></div>
+          <div class="lb-row"><span class="lb-rank">✓</span><span class="lb-name">EU AI Act</span><span class="lb-bar"><i style="width:92%;background:#7B5EA7"></i></span><span class="lb-score" data-de="Bereit">Ready</span></div>
+          <div class="lb-row"><span class="lb-rank">✓</span><span class="lb-name">Mittelstand</span><span class="lb-bar"><i style="width:88%;background:#9B4FD8"></i></span><span class="lb-score" data-de="Verstanden">Understood</span></div>
+          <a href="mailto:kailash@mpasys.ai" class="lb-link" data-de="Gespräch vereinbaren →">Talk to Us →</a>
         </div>
       </article>
       <article class="bento-card b-city"><div class="bento-img img-city"></div></article>
@@ -253,12 +266,12 @@
   <!-- ===================== CTA / FINAL ===================== -->
   <section class="cta">
     <div class="cta-inner">
-      <h2 class="cta-title">Let's talk before<br/>you decide.</h2>
-      <p class="cta-copy">If AI adoption is on your agenda this year, take 30 minutes with us first. We will tell you honestly whether we are the right fit — and if we are not, we will tell you that too. No sales deck. Just a direct conversation about where AI and automation create real, measurable value.</p>
-      <a href="mailto:kailash@mpasys.ai" class="btn-dark">Book a 30-Minute Call
+      <h2 class="cta-title" data-de="Sprechen wir,&lt;br/&gt;bevor Sie entscheiden.">Let's talk before<br/>you decide.</h2>
+      <p class="cta-copy" data-de="Wenn KI-Adoption dieses Jahr auf Ihrer Agenda steht, nehmen Sie sich zuerst 30 Minuten mit uns. Wir sagen Ihnen ehrlich, ob wir der richtige Partner sind — und wenn nicht, sagen wir Ihnen auch das. Kein Sales-Deck. Ein direktes Gespräch darüber, wo KI und Automatisierung messbaren Wert schaffen.</p>
+      <a href="mailto:kailash@mpasys.ai" class="btn-dark"><span data-de="30-Minuten-Gespräch buchen">Book a 30-Minute Call</span>
         <span class="btn-dark-arrow"><svg viewBox="0 0 24 24" width="14" height="14"><path d="M9 6 L15 12 L9 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
       </a>
-      <p class="cta-mail">Or email directly: <a href="mailto:kailash@mpasys.ai">kailash@mpasys.ai</a></p>
+      <p class="cta-mail"><span data-de="Oder direkt per E-Mail:">Or email directly:</span> <a href="mailto:kailash@mpasys.ai">kailash@mpasys.ai</a></p>
       <div class="cta-marks" aria-hidden="true">
         <i></i><i></i><i></i><i></i>
       </div>
@@ -267,35 +280,31 @@
 
   <!-- ===================== FOOTER ===================== -->
   <footer class="footer">
-    <h2 class="footer-big">Helping German businesses make AI work. Since day one.</h2>
+    <h2 class="footer-big" data-de="Wir bringen KI in deutschen Unternehmen zum Laufen. Von Anfang an.">Helping German businesses make AI work. Since day one.</h2>
     <div class="footer-cols">
       <div class="footer-col">
-        <span class="footer-col-h">Services</span>
-        <a href="service-ai.html">AI Consulting &amp; Engineering</a>
-        <a href="service-zoho.html#crm">Zoho CRM Implementation</a>
-        <a href="service-zoho.html#one">Zoho One Deployment</a>
-        <a href="service-ai.html#automation">Intelligent Automation</a>
-        <a href="service-ai.html#readiness">AI Readiness Assessment</a>
-        <a href="service-ai.html#custom">Custom AI Products</a>
+        <span class="footer-col-h" data-de="Leistungen">Services</span>
+        <a href="service-ai.html" data-de="KI-Beratung &amp; Engineering">AI Consulting &amp; Engineering</a>
+        <a href="service-ai.html#data" data-de="Datenfundament für KI">Data Foundations</a>
+        <a href="service-ai.html#automation" data-de="Intelligente Automatisierung">Intelligent Automation</a>
+        <a href="service-ai.html#readiness" data-de="AI-Readiness-Assessment">AI Readiness Assessment</a>
+        <a href="service-zoho.html#crm" data-de="Zoho-CRM-Implementierung">Zoho CRM Implementation</a>
+        <a href="service-zoho.html#one" data-de="Zoho-One-Einführung">Zoho One Deployment</a>
       </div>
       <div class="footer-col">
-        <span class="footer-col-h">Industries</span>
-        <a href="industry-manufacturing.html">Manufacturing &amp; Mittelstand</a>
-        <a href="industry-logistics.html">Logistics &amp; Supply Chain</a>
-        <a href="industry-finance.html">Finance &amp; Insurance</a>
-        <a href="industry-professional-services.html">Professional Services</a>
-        <a href="industry-healthcare.html">Healthcare Operations</a>
-        <a href="industry-b2b-sales.html">B2B Sales</a>
+        <span class="footer-col-h" data-de="Branchen">Industries</span>
+        <a href="industry-manufacturing.html" data-de="Fertigung &amp; Mittelstand">Manufacturing &amp; Mittelstand</a>
+        <a href="industry-logistics.html" data-de="Logistik &amp; Supply Chain">Logistics &amp; Supply Chain</a>
+        <a href="industry-finance.html" data-de="Finanzen &amp; Versicherung">Finance &amp; Insurance</a>
+        <a href="industry-healthcare.html" data-de="Gesundheitswesen">Healthcare Operations</a>
       </div>
       <div class="footer-col">
-        <span class="footer-col-h">Company</span>
-        <a href="about.html">About</a>
-        <a href="cases.html">Case Studies</a>
-        <a href="insights.html">Insights</a>
-        <a href="mailto:kailash@mpasys.ai">Contact</a>
+        <span class="footer-col-h" data-de="Unternehmen">Company</span>
+        <a href="about.html" data-de="Über mpasys.ai">About mpasys.ai</a>
+        <a href="mailto:kailash@mpasys.ai" data-de="Kontakt">Contact</a>
       </div>
       <div class="footer-col">
-        <span class="footer-col-h">Legal</span>
+        <span class="footer-col-h" data-de="Rechtliches">Legal</span>
         <a href="#">Impressum</a>
         <a href="#">Datenschutzerklärung</a>
         <a href="#">Cookie-Einstellungen</a>

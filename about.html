@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>About — Vancel Technologies</title>
-  <meta name="description" content="Vancel Technologies is an AI consultancy that builds responsible AI agents for mid-market companies in the DACH region — deep technical execution with governance regulators, boards and customers can trust." />
-  <meta property="og:title" content="About — Vancel Technologies" />
-  <meta property="og:description" content="Responsible AI in every business. We make AI adoption safe, measurable, and accountable." />
+  <title>About — mpasys.ai</title>
+  <meta name="description" content="mpasys.ai is one team across two countries: senior Indian engineering paired with a German business and compliance team — so enterprises get world-class AI execution and a partner accountable to them locally. GDPR and EU AI Act ready." />
+  <meta property="og:title" content="About — mpasys.ai" />
+  <meta property="og:description" content="One team, two countries. Indian engineering depth, German business and compliance fluency — building AI that actually goes live." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
@@ -21,16 +21,27 @@
         <img src="images/mpasys-logo.png" alt="mpasys" class="logo-img" />
       </a>
       <nav class="main-nav">
-        <div class="nav-group" data-menu="services"><button class="nav-item">Services</button></div>
-        <div class="nav-group" data-menu="industries"><button class="nav-item">Industries</button></div>
-        <a class="nav-item" href="about.html">About</a>
-        <a class="nav-item" href="cases.html">Case Studies</a>
-        <div class="nav-group" data-menu="insights"><button class="nav-item">Insights</button></div>
+        <div class="nav-group" data-menu="services"><button class="nav-item" data-de="Leistungen">Services</button></div>
+        <div class="nav-group" data-menu="industries"><button class="nav-item" data-de="Branchen">Industries</button></div>
+        <a class="nav-item" href="about.html" data-de="Über uns">About</a>
       </nav>
       <div class="header-actions">
-        <a href="mailto:kailash@mpasys.ai" class="btn-demo">Talk to Us</a>
+        <button class="lang-toggle" id="langToggle" aria-label="Switch language">DE</button>
+        <a href="mailto:kailash@mpasys.ai" class="btn-demo" data-de="Gespräch vereinbaren">Talk to Us</a>
+        <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
       </div>
     </div>
+
+    <!-- ===== MOBILE MENU ===== -->
+    <nav class="mobile-nav" id="mobileNav">
+      <a href="service-ai.html" data-de="KI-Beratung &amp; Engineering">AI Consulting &amp; Engineering</a>
+      <a href="service-zoho.html" data-de="Zoho-Implementierung">Zoho Implementation</a>
+      <a href="industry-manufacturing.html" data-de="Branchen">Industries</a>
+      <a href="about.html" data-de="Über uns">About</a>
+      <a href="mailto:kailash@mpasys.ai" class="mobile-cta" data-de="Gespräch vereinbaren">Talk to Us</a>
+    </nav>
 
     <!-- ===== MEGA MENU ===== -->
     <div class="mega" id="mega">
@@ -38,17 +49,18 @@
       <div class="mega-panel" data-menu="services">
         <div class="mega-cols">
           <div class="mega-col">
-            <span class="mega-cat">Build with us</span>
-            <a class="mega-link" href="service-ai.html">AI Consulting &amp; Engineering</a>
-            <a class="mega-link" href="service-zoho.html">Zoho Implementation</a>
+            <span class="mega-cat" data-de="Mit uns umsetzen">Build with us</span>
+            <a class="mega-link" href="service-ai.html" data-de="KI-Beratung &amp; Engineering">AI Consulting &amp; Engineering</a>
+            <a class="mega-link" href="service-zoho.html" data-de="Zoho-Implementierung">Zoho Implementation</a>
           </div>
           <div class="mega-col">
-            <span class="mega-cat">Capabilities</span>
-            <a class="mega-link sm" href="service-ai.html#readiness">AI Readiness Assessment</a>
-            <a class="mega-link sm" href="service-ai.html#genai">Generative AI for Operations</a>
-            <a class="mega-link sm" href="service-ai.html#automation">Intelligent Automation</a>
-            <a class="mega-link sm" href="service-zoho.html#crm">Zoho CRM Implementation</a>
-            <a class="mega-link sm" href="service-zoho.html#one">Zoho One Deployment</a>
+            <span class="mega-cat" data-de="Kompetenzen">Capabilities</span>
+            <a class="mega-link sm" href="service-ai.html#readiness" data-de="AI-Readiness-Assessment">AI Readiness Assessment</a>
+            <a class="mega-link sm" href="service-ai.html#data" data-de="Datenfundament für KI">Data Foundations</a>
+            <a class="mega-link sm" href="service-ai.html#genai" data-de="Generative KI im Betrieb">Generative AI for Operations</a>
+            <a class="mega-link sm" href="service-ai.html#automation" data-de="Intelligente Automatisierung">Intelligent Automation</a>
+            <a class="mega-link sm" href="service-zoho.html#crm" data-de="Zoho-CRM-Implementierung">Zoho CRM Implementation</a>
+            <a class="mega-link sm" href="service-zoho.html#one" data-de="Zoho-One-Einführung">Zoho One Deployment</a>
           </div>
         </div>
         <a class="mega-media" href="service-ai.html" style="background-image:url('images/robotics.jpg')" aria-label="AI Consulting"></a>
@@ -58,33 +70,17 @@
       <div class="mega-panel" data-menu="industries">
         <div class="mega-cols">
           <div class="mega-col">
-            <span class="mega-cat">By Industry</span>
-            <a class="mega-link sm" href="industry-manufacturing.html">Manufacturing &amp; Mittelstand</a>
-            <a class="mega-link sm" href="industry-logistics.html">Logistics &amp; Supply Chain</a>
-            <a class="mega-link sm" href="industry-finance.html">Finance &amp; Insurance</a>
+            <span class="mega-cat" data-de="Nach Branche">By Industry</span>
+            <a class="mega-link sm" href="industry-manufacturing.html" data-de="Fertigung &amp; Mittelstand">Manufacturing &amp; Mittelstand</a>
+            <a class="mega-link sm" href="industry-logistics.html" data-de="Logistik &amp; Supply Chain">Logistics &amp; Supply Chain</a>
           </div>
           <div class="mega-col">
             <span class="mega-cat">&nbsp;</span>
-            <a class="mega-link sm" href="industry-professional-services.html">Professional Services</a>
-            <a class="mega-link sm" href="industry-healthcare.html">Healthcare Operations</a>
-            <a class="mega-link sm" href="industry-b2b-sales.html">B2B Sales Organisations</a>
+            <a class="mega-link sm" href="industry-finance.html" data-de="Finanzen &amp; Versicherung">Finance &amp; Insurance</a>
+            <a class="mega-link sm" href="industry-healthcare.html" data-de="Gesundheitswesen">Healthcare Operations</a>
           </div>
         </div>
         <a class="mega-media" href="industry-finance.html" style="background-image:url('images/finance.jpg')" aria-label="Industries"></a>
-      </div>
-
-      <!-- Insights -->
-      <div class="mega-panel" data-menu="insights">
-        <div class="mega-cols">
-          <div class="mega-col wide">
-            <span class="mega-cat">How we engage</span>
-            <a class="mega-link" href="insights.html#understanding">Understanding call — 30 minutes</a>
-            <a class="mega-link" href="insights.html#assessment">Assessment — 1 to 2 weeks</a>
-            <a class="mega-link" href="insights.html#build">Build and deploy — 4 to 8 weeks</a>
-            <a class="mega-link" href="insights.html#handover">Handover and support</a>
-          </div>
-        </div>
-        <a class="mega-media" href="insights.html" style="background-image:url('images/aerospace.jpg')" aria-label="Insights"></a>
       </div>
     </div>
   </header>
@@ -94,31 +90,31 @@
     <div class="hero-bg" aria-hidden="true"></div>
     <div class="hero-overlay" aria-hidden="true"></div>
     <div class="hero-content">
-      <span class="hero-crumb"><a href="index.html">Home</a><span class="sep">/</span>About</span>
-      <h1 class="hero-title">Responsible AI, built<br/>for businesses that<br/>have to answer for it.</h1>
-      <p class="hero-sub">Vancel Technologies is an AI consultancy that builds responsible AI agents for mid-market companies — primarily in the DACH region. We combine deep technical execution with governance that regulators, boards, and customers can trust.</p>
+      <span class="hero-crumb"><a href="index.html" data-de="Start">Home</a><span class="sep">/</span><span data-de="Über uns">About</span></span>
+      <h1 class="hero-title" data-de="In Indien entwickelt.&lt;br/&gt;In Deutschland verantwortet.">Engineered in India.<br/>Accountable in Germany.</h1>
+      <p class="hero-sub" data-de="Ein Team über zwei Länder: erfahrenes indisches Engineering baut die Systeme, ein deutschsprachiges Team verantwortet Beziehung, Sprache und Compliance. Erstklassige Umsetzung — mit einem Partner, der Ihnen vor Ort Rede und Antwort steht.">One team across two countries: senior Indian engineering builds the systems, a German-facing team owns the relationship, language and compliance. World-class execution, with a partner accountable to you locally.</p>
       <div class="hero-cta-row">
-        <a href="mailto:kailash@mpasys.ai" class="btn-hero">Book your call</a>
-        <a href="#culture" class="btn-hero-ghost">Meet the team →</a>
+        <a href="mailto:kailash@mpasys.ai" class="btn-hero" data-de="Gespräch buchen">Book your call</a>
+        <a href="#culture" class="btn-hero-ghost" data-de="So arbeiten wir →">See how we work →</a>
       </div>
       <div class="hero-metrics">
-        <div class="hero-metric"><b>DACH</b><span>Mid-market focus</span></div>
-        <div class="hero-metric"><b>Governance</b><span>Trusted by boards &amp; regulators</span></div>
-        <div class="hero-metric"><b>Responsible</b><span>AI by default, not as an add-on</span></div>
+        <div class="hero-metric"><b data-de="Zwei Teams">Two teams</b><span data-de="Indien + Deutschland, eine Einheit">India + Germany, one delivery unit</span></div>
+        <div class="hero-metric"><b data-de="Deutschsprachig">German-facing</b><span data-de="Sprache, Verträge, Compliance">Language, contracts, compliance</span></div>
+        <div class="hero-metric"><b>15+</b><span data-de="Enterprise-Projekte geliefert">Enterprise projects delivered</span></div>
       </div>
     </div>
   </section>
 
-  <!-- ===================== OUR CULTURE ===================== -->
+  <!-- ===================== HOW WE'RE BUILT ===================== -->
   <section class="pageintro section-light" id="culture">
     <div class="pageintro-inner">
       <div>
-        <span class="pageintro-eyebrow">Our culture</span>
-        <h2 class="pageintro-title">A small team that punches above its weight.</h2>
+        <span class="pageintro-eyebrow" data-de="Wie wir aufgestellt sind">How we're built</span>
+        <h2 class="pageintro-title" data-de="Eine deutsche Front, gestützt auf eine tiefe Engineering-Bank.">A German front line, backed by a deep engineering bench.</h2>
       </div>
       <div class="pageintro-lead">
-        <p>We move fast, stay close to customers, and hold ourselves to a high bar — because responsible AI demands nothing less.</p>
-        <p>In practice, this means short feedback loops, direct communication, and zero tolerance for busywork. If it doesn't move the needle for our clients, we don't do it.</p>
+        <p data-de="Die meisten Beratungen zwingen Sie zur Wahl: lokale Nähe oder Engineering-Tiefe. Ein Team nebenan, das die schwierigen Teile auslagert — oder ein Offshore-Anbieter, den Sie nie richtig erreichen. Wir sind so gebaut, dass Sie diese Wahl nie treffen müssen.">Most consultancies make you choose: local proximity or engineering depth. A team nearby that outsources the hard parts, or an offshore shop you can never quite reach. We are built so you never have to make that trade.</p>
+        <p data-de="Ihr Ansprechpartner ist hier — in Ihrem Markt, Ihrer Sprache und Ihrer Zeitzone — verantwortlich für Lieferung, Compliance und jede Zusage, die wir machen. Dahinter steht ein erfahrenes Engineering-Team in Indien, das KI und Unternehmenssoftware im großen Maßstab gebaut und ausgeliefert hat. Eine Einheit, zwei Länder, ein Standard.">Your point of contact is here — in your market, your language and your timezone — accountable for delivery, compliance and every commitment we make. Behind them sits a senior engineering team in India that has built and shipped AI and enterprise software at scale. One unit, two countries, a single standard of work.</p>
       </div>
     </div>
   </section>
@@ -127,36 +123,36 @@
   <section class="benchmark section-light" id="pillars">
     <div class="benchmark-sticky">
       <div class="benchmark-head">
-        <span class="benchmark-eyebrow">Why mpasys.ai. And not the next vendor in your inbox.</span>
-        <h2 class="benchmark-title">Three things that decide whether an AI project goes live or gets archived.</h2>
+        <span class="benchmark-eyebrow" data-de="Warum mpasys.ai. Und nicht der nächste Anbieter in Ihrem Postfach.">Why mpasys.ai. And not the next vendor in your inbox.</span>
+        <h2 class="benchmark-title" data-de="Drei Dinge, die entscheiden, ob ein KI-Projekt live geht — oder archiviert wird.">Three things that decide whether an AI project goes live — or gets archived.</h2>
       </div>
       <div class="benchmark-grid">
 
         <article class="bm-card" data-accent="mauve">
           <div class="bm-icon">
-            <svg viewBox="0 0 24 24" width="26" height="26"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 12 H16 M12 8 V16"/></g></svg>
+            <svg viewBox="0 0 24 24" width="26" height="26"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="12" r="4"/><circle cx="16" cy="12" r="4"/></g></svg>
           </div>
-          <h3 class="bm-head">We work inside your process, not outside it.</h3>
-          <p class="bm-body">Before we write a line of code or configure a single module, we spend time understanding how your business actually runs — the handoffs, the bottlenecks, the workarounds your team has lived with for years. That is what gets designed out. Not theorised out. Designed out.</p>
-          <a href="mailto:kailash@mpasys.ai" class="bm-more">Talk to Us</a>
+          <h3 class="bm-head" data-de="Zwei Länder, ein verantwortliches Team.">Two countries, one accountable team.</h3>
+          <p class="bm-body" data-de="Unser deutsches Team verantwortet Beziehung, Anforderungen und Compliance — in Ihrer Sprache, Ihrer Zeitzone, Ihrer rechtlichen Realität. Unser indisches Engineering-Team bringt die Tiefe und Geschwindigkeit, es tatsächlich zu bauen. Sie bekommen das Beste aus beidem und einen Partner, der für das Ergebnis geradesteht. Keine Offshore-Übergabe, nichts geht in der Übersetzung verloren.">Our German team owns the relationship, the requirements and the compliance — in your language, your timezone, your legal reality. Our Indian engineering team brings the depth and the speed to actually build it. You get the best of both, and a single partner answerable for the outcome. No offshore hand-off. Nothing lost in translation.</p>
+          <a href="mailto:kailash@mpasys.ai" class="bm-more" data-de="Gespräch vereinbaren">Talk to Us</a>
         </article>
 
         <article class="bm-card" data-accent="tan">
           <div class="bm-icon">
             <svg viewBox="0 0 24 24" width="26" height="26"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 L20 6 V11 C20 16 16.5 19.5 12 21 C7.5 19.5 4 16 4 11 V6 Z"/><path d="M8.5 12 L11 14.5 L15.5 9.5"/></g></svg>
           </div>
-          <h3 class="bm-head">Compliance is not a checkbox. It is our starting point.</h3>
-          <p class="bm-body">GDPR, the EU AI Act, sector-specific data obligations — we do not layer compliance onto a finished system. We architect from it. If your legal team asks how data flows through the AI, we have a clean answer ready. Every time.</p>
-          <a href="mailto:kailash@mpasys.ai" class="bm-more">Talk to Us</a>
+          <h3 class="bm-head" data-de="Compliance ist kein Häkchen. Sie ist unser Ausgangspunkt.">Compliance is not a checkbox. It is our starting point.</h3>
+          <p class="bm-body" data-de="DSGVO, EU AI Act, branchenspezifische Datenpflichten — wir legen Compliance nicht über ein fertiges System, wir konstruieren daraus. Weil unser deutsches Team täglich in dieser regulatorischen Realität lebt, ist sie vom ersten Gespräch an eingebaut — und wird nicht am Ende in einer Prüfung entdeckt.">GDPR, the EU AI Act, sector-specific data obligations — we do not layer compliance onto a finished system, we architect from it. Because our German team lives inside that regulatory reality every day, it is designed in from the first conversation — not discovered in a review at the end.</p>
+          <a href="mailto:kailash@mpasys.ai" class="bm-more" data-de="Gespräch vereinbaren">Talk to Us</a>
         </article>
 
         <article class="bm-card" data-accent="green">
           <div class="bm-icon">
             <svg viewBox="0 0 24 24" width="26" height="26"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 L21 8 L12 13 L3 8 Z"/><path d="M3 12 L12 17 L21 12"/><path d="M3 16 L12 21 L21 16"/></g></svg>
           </div>
-          <h3 class="bm-head">AI consulting and Zoho — connected, not siloed.</h3>
-          <p class="bm-body">Most businesses have either a CRM problem or an AI problem. Usually they have both, and they are linked. We are the only partner in your market who solves them together — building intelligent workflows that live inside the same Zoho environment your team already operates in.</p>
-          <a href="mailto:kailash@mpasys.ai" class="bm-more">Talk to Us</a>
+          <h3 class="bm-head" data-de="KI-Beratung und Zoho — verbunden, nicht getrennt.">AI consulting and Zoho — connected, not siloed.</h3>
+          <p class="bm-body" data-de="Die meisten Unternehmen haben entweder ein CRM- oder ein KI-Problem. Meist beides, und es hängt zusammen. Wir lösen beides gemeinsam — mit intelligenten Workflows in genau der Zoho-Umgebung, die Ihr Team ohnehin nutzt. Ein System, kein weiteres Werkzeug zum Pflegen.">Most businesses have either a CRM problem or an AI problem. Usually both, and they are linked. We solve them together — building intelligent workflows that live inside the same Zoho environment your team already operates in. One system, not another tool to maintain.</p>
+          <a href="mailto:kailash@mpasys.ai" class="bm-more" data-de="Gespräch vereinbaren">Talk to Us</a>
         </article>
 
       </div>
@@ -172,8 +168,8 @@
         <div class="panel" style="background-image:url('images/robotics.jpg')"></div>
       </div>
       <div class="story-text">
-        <h2>The technology should serve the business and the people it affects — not the other way around.</h2>
-        <p>Every agent we build, every system we integrate, every framework we design starts from that premise. Deep technical execution on one side, governance regulators and boards can trust on the other — held together by short feedback loops and direct, honest communication.</p>
+        <h2 data-de="Erstklassiges Engineering ist wertlos, wenn ein Unternehmen ihm vor Ort nicht vertrauen kann.">World-class engineering means nothing if a business can't trust it locally.</h2>
+        <p data-de="Diese Überzeugung ist der Grund, warum mpasys.ai so gebaut ist, wie es ist. Wir bringen erfahrene indische Engineering-Talente zu deutschen Unternehmen — aber immer über ein lokales Team, das die Verantwortung trägt, die Sprache spricht und hinter jedem Deployment steht. Tiefe technische Umsetzung auf der einen Seite, echte geschäftliche und regulatorische Verantwortung auf der anderen — zusammengehalten durch kurze Feedbackschleifen und direkte, ehrliche Kommunikation.">That belief is why mpasys.ai is built the way it is. We bring senior Indian engineering talent to German enterprises — but always through a local team that carries the accountability, speaks the language, and stands behind every deployment. Deep technical execution on one side, real business and regulatory ownership on the other, held together by short feedback loops and direct, honest communication.</p>
       </div>
     </div>
   </section>
@@ -182,8 +178,8 @@
   <section class="statement section-light" id="mission">
     <div class="statement-inner">
       <span class="pageintro-eyebrow">Mission</span>
-      <p>Responsible AI <b>in every business.</b></p>
-      <p class="statement-sub">We exist to make AI adoption safe, measurable, and accountable. Every agent we build, every system we integrate, every framework we design starts from the same premise: the technology should serve the business and the people it affects — not the other way around.</p>
+      <p data-de="KI, die &lt;b&gt;wirklich live geht&lt;/b&gt; — und bleibt.">AI that <b>actually goes live</b> — and stays there.</p>
+      <p class="statement-sub" data-de="Wir existieren, um die Lücke zu schließen zwischen dem, was KI verspricht, und dem, was deutsche Unternehmen tatsächlich in Produktion bringen können. Das braucht zwei Dinge, die die meisten Partner nicht gleichzeitig bieten: Engineering, das tief genug ist, um es richtig zu bauen, und lokale Verantwortung, die stark genug ist, um ihr zu vertrauen. Wir bringen beides.">We exist to close the gap between what AI promises and what German businesses can actually put into production. That takes two things most partners can't offer at once: engineering deep enough to build it properly, and local accountability strong enough to be trusted with it. We bring both.</p>
     </div>
   </section>
 
@@ -191,65 +187,61 @@
   <section class="statement" id="vision" style="background:var(--gray-100);">
     <div class="statement-inner">
       <span class="pageintro-eyebrow">Vision</span>
-      <p>“AI-powered” and <b>“trustworthy”</b> in the same sentence.</p>
-      <p class="statement-sub">We're working toward a future where responsible AI is the default, not the differentiator. Where every boardroom that says “we're AI-powered” also means “we're transparent, fair, and accountable.” That's the standard we hold ourselves to.</p>
+      <p data-de="Globales Engineering, &lt;b&gt;lokales Vertrauen&lt;/b&gt; — im selben Partner.">Global engineering, <b>local trust</b> — in the same partner.</p>
+      <p class="statement-sub" data-de="Wir arbeiten auf einen Markt hin, in dem ein deutsches Unternehmen nie zwischen erstklassigem technischem Talent und einem Partner wählen muss, dem es in die Augen sehen kann. In dem &lsquo;offshore gebaut&rsquo; und &lsquo;hier voll verantwortlich&rsquo; kein Widerspruch mehr sind. Das ist der Standard, an dem wir uns messen.">We're working toward a market where a German enterprise never has to choose between world-class technical talent and a partner it can look in the eye. Where "built offshore" and "fully accountable here" stop being a contradiction. That's the standard we hold ourselves to.</p>
     </div>
   </section>
 
   <!-- ===================== BY THE NUMBERS ===================== -->
   <section class="proof">
     <div class="proof-inner">
-      <article class="proof-block"><span class="proof-num">DACH</span><span class="proof-label">Primary region we serve</span><span class="proof-sub">Built for the realities of the German-speaking mid-market</span></article>
-      <article class="proof-block"><span class="proof-num">100%</span><span class="proof-label">Governance from day one</span><span class="proof-sub">Transparent, fair and accountable by architecture</span></article>
-      <article class="proof-block"><span class="proof-num">EU AI Act</span><span class="proof-label">Implementation ready</span><span class="proof-sub">Compliance designed in, never bolted on at the end</span></article>
-      <article class="proof-block"><span class="proof-num">Outcomes</span><span class="proof-label">How we measure success</span><span class="proof-sub">By what moves the needle for clients — not by deliverables</span></article>
+      <article class="proof-block"><span class="proof-num" data-de="2 Teams">2 teams</span><span class="proof-label" data-de="Indien und Deutschland, eine Einheit">India and Germany, one delivery unit</span><span class="proof-sub" data-de="Engineering-Tiefe im Ausland, Verantwortung im Inland">Engineering depth abroad, accountability at home</span></article>
+      <article class="proof-block"><span class="proof-num">15+</span><span class="proof-label" data-de="Enterprise-Projekte geliefert">Enterprise projects delivered</span><span class="proof-sub" data-de="Über KI und Zoho hinweg, in Produktion — keine Pilotprojekte">Across AI and Zoho, in production — not pilots</span></article>
+      <article class="proof-block"><span class="proof-num" data-de="DSGVO">GDPR</span><span class="proof-label" data-de="Per Architektur, ab Tag eins">By architecture, from day one</span><span class="proof-sub" data-de="Verantwortet von einem Team in der regulatorischen Realität">Owned by a team inside the regulatory reality</span></article>
+      <article class="proof-block"><span class="proof-num">EU AI Act</span><span class="proof-label" data-de="Bereit zur Umsetzung">Implementation ready</span><span class="proof-sub" data-de="Compliance eingebaut, nie nachgerüstet">Compliance designed in, never bolted on</span></article>
     </div>
   </section>
 
   <!-- ===================== CTA ===================== -->
   <section class="cta">
     <div class="cta-inner">
-      <h2 class="cta-title">Let's build<br/>responsibly.</h2>
-      <p class="cta-copy">30 minutes. No pitch deck. We listen, assess fit, and give you an honest recommendation — even if it's "you don't need us yet."</p>
-      <a href="mailto:kailash@mpasys.ai" class="btn-dark">Book your call
+      <h2 class="cta-title" data-de="Bauen wir&lt;br/&gt;etwas, das bleibt.">Let's build<br/>something that lasts.</h2>
+      <p class="cta-copy" data-de="30 Minuten. Kein Pitch-Deck. Wir hören zu, prüfen die Passung und geben Ihnen eine ehrliche Empfehlung — auch wenn sie lautet: &lsquo;Sie brauchen uns noch nicht.&rsquo;">30 minutes. No pitch deck. We listen, assess fit, and give you an honest recommendation — even if it's "you don't need us yet."</p>
+      <a href="mailto:kailash@mpasys.ai" class="btn-dark"><span data-de="Gespräch buchen">Book your call</span>
         <span class="btn-dark-arrow"><svg viewBox="0 0 24 24" width="14" height="14"><path d="M9 6 L15 12 L9 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
       </a>
-      <p class="cta-mail">Or email directly: <a href="mailto:kailash@mpasys.ai">kailash@mpasys.ai</a></p>
+      <p class="cta-mail"><span data-de="Oder direkt per E-Mail:">Or email directly:</span> <a href="mailto:kailash@mpasys.ai">kailash@mpasys.ai</a></p>
       <div class="cta-marks" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
     </div>
   </section>
 
   <!-- ===================== FOOTER ===================== -->
   <footer class="footer">
-    <h2 class="footer-big">Helping German businesses make AI work. Since day one.</h2>
+    <h2 class="footer-big" data-de="Wir bringen KI in deutschen Unternehmen zum Laufen. Von Anfang an.">Helping German businesses make AI work. Since day one.</h2>
     <div class="footer-cols">
       <div class="footer-col">
-        <span class="footer-col-h">Services</span>
-        <a href="service-ai.html">AI Consulting &amp; Engineering</a>
-        <a href="service-zoho.html#crm">Zoho CRM Implementation</a>
-        <a href="service-zoho.html#one">Zoho One Deployment</a>
-        <a href="service-ai.html#automation">Intelligent Automation</a>
-        <a href="service-ai.html#readiness">AI Readiness Assessment</a>
-        <a href="service-ai.html#custom">Custom AI Products</a>
+        <span class="footer-col-h" data-de="Leistungen">Services</span>
+        <a href="service-ai.html" data-de="KI-Beratung &amp; Engineering">AI Consulting &amp; Engineering</a>
+        <a href="service-ai.html#data" data-de="Datenfundament für KI">Data Foundations</a>
+        <a href="service-ai.html#automation" data-de="Intelligente Automatisierung">Intelligent Automation</a>
+        <a href="service-ai.html#readiness" data-de="AI-Readiness-Assessment">AI Readiness Assessment</a>
+        <a href="service-zoho.html#crm" data-de="Zoho-CRM-Implementierung">Zoho CRM Implementation</a>
+        <a href="service-zoho.html#one" data-de="Zoho-One-Einführung">Zoho One Deployment</a>
       </div>
       <div class="footer-col">
-        <span class="footer-col-h">Industries</span>
-        <a href="industry-manufacturing.html">Manufacturing &amp; Mittelstand</a>
-        <a href="industry-logistics.html">Logistics &amp; Supply Chain</a>
-        <a href="industry-finance.html">Finance &amp; Insurance</a>
-        <a href="industry-professional-services.html">Professional Services</a>
-        <a href="industry-healthcare.html">Healthcare Operations</a>
-        <a href="industry-b2b-sales.html">B2B Sales</a>
+        <span class="footer-col-h" data-de="Branchen">Industries</span>
+        <a href="industry-manufacturing.html" data-de="Fertigung &amp; Mittelstand">Manufacturing &amp; Mittelstand</a>
+        <a href="industry-logistics.html" data-de="Logistik &amp; Supply Chain">Logistics &amp; Supply Chain</a>
+        <a href="industry-finance.html" data-de="Finanzen &amp; Versicherung">Finance &amp; Insurance</a>
+        <a href="industry-healthcare.html" data-de="Gesundheitswesen">Healthcare Operations</a>
       </div>
       <div class="footer-col">
-        <span class="footer-col-h">Company</span>
-        <a href="about.html">About</a>
-        <a href="cases.html">Case Studies</a>
-        <a href="insights.html">Insights</a>
-        <a href="mailto:kailash@mpasys.ai">Contact</a>
+        <span class="footer-col-h" data-de="Unternehmen">Company</span>
+        <a href="about.html" data-de="Über mpasys.ai">About mpasys.ai</a>
+        <a href="mailto:kailash@mpasys.ai" data-de="Kontakt">Contact</a>
       </div>
       <div class="footer-col">
-        <span class="footer-col-h">Legal</span>
+        <span class="footer-col-h" data-de="Rechtliches">Legal</span>
         <a href="#">Impressum</a>
         <a href="#">Datenschutzerklärung</a>
         <a href="#">Cookie-Einstellungen</a>

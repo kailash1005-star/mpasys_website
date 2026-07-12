@@ -1,3 +1,24 @@
+/* ---------- Language: EN <-> DE ----------
+   Elements carrying data-de swap their innerHTML when German is active. The swap
+   runs before any animation init below, so GSAP splits/targets the translated DOM.
+   Toggling stores the preference and reloads — simplest correct behaviour for a
+   static multi-page site. */
+(function(){
+  const saved = localStorage.getItem('mpasys-lang') || 'en';
+  if(saved === 'de'){
+    document.querySelectorAll('[data-de]').forEach(el=>{ el.innerHTML = el.dataset.de; });
+    document.documentElement.lang = 'de';
+  }
+  const btn = document.getElementById('langToggle');
+  if(btn){
+    btn.textContent = saved === 'de' ? 'EN' : 'DE';
+    btn.addEventListener('click', ()=>{
+      localStorage.setItem('mpasys-lang', saved === 'de' ? 'en' : 'de');
+      location.reload();
+    });
+  }
+})();
+
 gsap.registerPlugin(ScrollTrigger);
 
 /* ---------- Header: dark over hero/dark sections, light over light sections ---------- */
@@ -13,6 +34,22 @@ function updateHeader(){
 }
 window.addEventListener('scroll', updateHeader, {passive:true});
 updateHeader();
+
+/* ---------- Home hero: header cloaked at the top, glides in across the hero scroll ----------
+   Set the hidden/glass state immediately (before ScrollTrigger wires up) to avoid a flash of
+   the solid bar. The reveal itself is driven from the hero scrub progress further below. */
+const heroScrubEl = document.getElementById('heroScrub');
+const heroCanScrub = heroScrubEl && !window.matchMedia('(hover: none), (pointer: coarse)').matches;
+function setHeaderReveal(p){
+  const r = Math.max(0, Math.min(1, (p - 0.03) / 0.72));   // hidden at top → fully in ~75% through
+  header.style.opacity = r;
+  header.style.transform = 'translateY(' + ((r - 1) * 100) + '%)';
+  header.style.pointerEvents = r < 0.25 ? 'none' : 'auto';
+}
+if(heroCanScrub && header){
+  header.classList.add('hero-float');
+  setHeaderReveal(0);
+}
 
 /* ---------- Mega menu (hover dropdowns, scale.com style) ---------- */
 (function(){
@@ -65,9 +102,87 @@ if(heroEl && heroBg){
     entries.forEach(e=> heroBg.classList.toggle('paused', !e.isIntersecting));
   },{threshold:0}).observe(heroEl);
 
-  /* ---------- Hero title subtle parallax (home only) ---------- */
-  gsap.to('.hero-bg', {yPercent:12, ease:'none', scrollTrigger:{trigger:'.hero', start:'top top', end:'bottom top', scrub:true}});
-  gsap.to('.hero-content', {yPercent:30, opacity:.2, ease:'none', scrollTrigger:{trigger:'.hero', start:'top top', end:'bottom top', scrub:true}});
+  /* ---------- Hero: scroll-scrubbed video + phased content (home only) ----------
+     The hero pins for the wrapper's height while the video's frames follow the
+     scrollbar — scroll drives currentTime (all-keyframe encode = instant seeks),
+     an rAF lerp smooths the playhead, and the content cross-fades through phases.
+     Touch devices skip the scrub and keep the ambient autoplay loop. */
+  const heroVideo = document.querySelector('.hero-video');
+  const heroScrub = document.getElementById('heroScrub');
+  const canScrub = heroVideo && heroScrub && !window.matchMedia('(hover: none), (pointer: coarse)').matches;
+
+  // First-paint entrance: eyebrow → headline → sub → CTAs rise in sequence over
+  // ~1.5s. Children only — phase-level opacity stays owned by the scrub timeline.
+  const introEls = document.querySelectorAll('.hero-phase[data-phase="0"] > *');
+  if(introEls.length && window.gsap){
+    gsap.from(introEls, {opacity:0, y:36, duration:1.1, ease:'power3.out',
+      stagger:0.14, delay:0.25, clearProps:'opacity,transform'});
+  }
+
+  if(canScrub){
+    heroVideo.removeAttribute('autoplay');
+    heroVideo.removeAttribute('loop');
+    heroVideo.setAttribute('preload','auto');
+    heroVideo.muted = true;
+    heroVideo.src = 'Videos/transformer-hero-scrub.mp4?v=2';   // every frame a keyframe (v2: 1080p master)
+    heroVideo.load();
+    // A paused, never-played video often won't buffer/decode frames (readyState
+    // stays at 1), which freezes seeking on frame 0. Kick it once data lands:
+    // play → pause primes the decoder; the rAF then drives it back to frame 0.
+    heroVideo.addEventListener('loadeddata', ()=>{
+      heroVideo.play().then(()=> heroVideo.pause()).catch(()=>{});
+    }, {once:true});
+
+    let scrollProgress = 0;
+    ScrollTrigger.create({
+      trigger: heroScrub, start:'top top', end:'bottom bottom', scrub:true,
+      onUpdate(self){ scrollProgress = self.progress; setHeaderReveal(self.progress); },
+      // Past the hero: hand the header back to the normal solid/light logic.
+      onLeave(){ header.classList.remove('hero-float'); header.style.opacity=''; header.style.transform=''; header.style.pointerEvents=''; },
+      onEnterBack(){ header.classList.add('hero-float'); }
+    });
+    (function scrubStep(){
+      const d = heroVideo.duration;                       // read live — no metadata-timing race
+      if(d && isFinite(d)){
+        // reach the final frame by 92% of the scroll, then hold it — so the tail
+        // of the clip always plays out before the hero unpins (no cut-off end).
+        const vp = Math.min(1, scrollProgress / 0.92);
+        const target = vp * (d - 0.04);
+        const cur = heroVideo.currentTime;
+        const next = cur + (target - cur) * 0.14;          // gentle lerp = fluid, glides after the scrollbar
+        if(Math.abs(next - cur) > 0.001){ try{ heroVideo.currentTime = next; }catch(e){} }
+      }
+      requestAnimationFrame(scrubStep);
+    })();
+
+    // Content choreography: cross-fade the phases across the pinned scroll,
+    // synced to the same range that scrubs the video. Each phase holds, then
+    // hands off to the next; the video keeps advancing underneath throughout.
+    const phases = gsap.utils.toArray('.hero-phase');
+    const N = phases.length;
+    gsap.set(phases, {opacity:0, y:32, pointerEvents:'none'});
+    gsap.set(phases[0], {opacity:1, y:0, pointerEvents:'auto'});
+
+    const HOLD = 0.6, TRANS = 0.32;   // per-phase hold vs. transition (timeline units)
+    const heroTl = gsap.timeline({defaults:{ease:'none'},
+      scrollTrigger:{trigger:heroScrub, start:'top top', end:'bottom bottom', scrub:1.2}});
+    // slow continuous zoom + fade the scroll hint; length N keeps the last phase held to the end.
+    // Zoom kept subtle (1 → 1.08): the film starts at native resolution so it stays pin-sharp.
+    heroTl.fromTo(heroVideo, {scale:1}, {scale:1.08, duration:N}, 0);
+    heroTl.to('.scroll-explore', {opacity:0, duration:0.5}, 0);
+    phases.forEach((p,i)=>{
+      const hasCta = !!p.querySelector('.hero-cta-row');
+      if(i>0){
+        heroTl.set(p, {pointerEvents: hasCta ? 'auto' : 'none'}, i - TRANS)
+              .fromTo(p, {opacity:0, y:32}, {opacity:1, y:0, duration:TRANS}, i - TRANS);
+      }
+      if(i < N-1){
+        heroTl.to(p, {opacity:0, y:-32, duration:TRANS}, i + HOLD)
+              .set(p, {pointerEvents:'none'}, i + HOLD + TRANS);
+      }
+    });
+  }
+  // Touch devices: phases render as a static stacked hero (CSS), video loops ambiently.
 }
 
 /* ---------- Pinned 3D panel stacks ---------- */
@@ -201,6 +316,30 @@ document.querySelectorAll('.partner-card,.proven-card,.bento-card,.cta-title,.ct
 
 /* ---------- Footer big text reveal ---------- */
 gsap.from('.footer-big',{opacity:0, y:60, duration:1, scrollTrigger:{trigger:'.footer', start:'top 80%'}});
+
+/* ---------- Sticky card-stack: cards stick + scale down as you scroll (subpages) ---------- */
+(function(){
+  const wraps = document.querySelectorAll('.svc-stack-wrap');
+  if(!wraps.length) return;
+  const STICK = 120;                 // px from top where each card pins
+  const STEP = 0.04;                 // how much each underlying card recedes
+  const mm = gsap.matchMedia();
+  mm.add('(min-width: 769px)', ()=>{
+    wraps.forEach(wrap=>{
+      const items = wrap.querySelectorAll('.svc-stack-item');
+      const cards = wrap.querySelectorAll('.svc-stack-card');
+      const N = cards.length;
+      cards.forEach((card,i)=>{
+        card.style.top = (STICK + i*28) + 'px';
+        const targetScale = 1 - (N - 1 - i) * STEP;
+        gsap.fromTo(card, {scale:1}, {
+          scale: targetScale, ease:'none',
+          scrollTrigger:{ trigger: items[i], start:'top '+STICK+'px', end:'bottom '+STICK+'px', scrub:true }
+        });
+      });
+    });
+  });
+})();
 
 /* ---------- Benchmark cards: single-select click-to-color (per section, any page) ---------- */
 document.querySelectorAll('.benchmark-grid').forEach(grid=>{

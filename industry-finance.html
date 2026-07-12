@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Finance &amp; Insurance — AI &amp; Zoho | mpasys.ai</title>
-  <meta name="description" content="AI and Zoho for regulated finance and insurance operations. Full audit trails, controlled data access and explainability built in — modernise without creating compliance exposure. GDPR and EU AI Act ready." />
+  <meta name="description" content="Explainable, auditable AI for finance and insurance. Document AI, controlled-access architecture and auditable automation — GDPR and EU AI Act ready." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
@@ -19,16 +19,27 @@
         <img src="images/mpasys-logo.png" alt="mpasys" class="logo-img" />
       </a>
       <nav class="main-nav">
-        <div class="nav-group" data-menu="services"><button class="nav-item">Services</button></div>
-        <div class="nav-group" data-menu="industries"><button class="nav-item">Industries</button></div>
-        <a class="nav-item" href="about.html">About</a>
-        <a class="nav-item" href="cases.html">Case Studies</a>
-        <div class="nav-group" data-menu="insights"><button class="nav-item">Insights</button></div>
+        <div class="nav-group" data-menu="services"><button class="nav-item" data-de="Leistungen">Services</button></div>
+        <div class="nav-group" data-menu="industries"><button class="nav-item" data-de="Branchen">Industries</button></div>
+        <a class="nav-item" href="about.html" data-de="Über uns">About</a>
       </nav>
       <div class="header-actions">
-        <a href="mailto:kailash@mpasys.ai" class="btn-demo">Talk to Us</a>
+        <button class="lang-toggle" id="langToggle" aria-label="Switch language">DE</button>
+        <a href="mailto:kailash@mpasys.ai" class="btn-demo" data-de="Gespräch vereinbaren">Talk to Us</a>
+        <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
       </div>
     </div>
+
+    <!-- ===== MOBILE MENU ===== -->
+    <nav class="mobile-nav" id="mobileNav">
+      <a href="service-ai.html" data-de="KI-Beratung &amp; Engineering">AI Consulting &amp; Engineering</a>
+      <a href="service-zoho.html" data-de="Zoho-Implementierung">Zoho Implementation</a>
+      <a href="industry-manufacturing.html" data-de="Branchen">Industries</a>
+      <a href="about.html" data-de="Über uns">About</a>
+      <a href="mailto:kailash@mpasys.ai" class="mobile-cta" data-de="Gespräch vereinbaren">Talk to Us</a>
+    </nav>
 
     <!-- ===== MEGA MENU ===== -->
     <div class="mega" id="mega">
@@ -36,17 +47,18 @@
       <div class="mega-panel" data-menu="services">
         <div class="mega-cols">
           <div class="mega-col">
-            <span class="mega-cat">Build with us</span>
-            <a class="mega-link" href="service-ai.html">AI Consulting &amp; Engineering</a>
-            <a class="mega-link" href="service-zoho.html">Zoho Implementation</a>
+            <span class="mega-cat" data-de="Mit uns umsetzen">Build with us</span>
+            <a class="mega-link" href="service-ai.html" data-de="KI-Beratung &amp; Engineering">AI Consulting &amp; Engineering</a>
+            <a class="mega-link" href="service-zoho.html" data-de="Zoho-Implementierung">Zoho Implementation</a>
           </div>
           <div class="mega-col">
-            <span class="mega-cat">Capabilities</span>
-            <a class="mega-link sm" href="service-ai.html#readiness">AI Readiness Assessment</a>
-            <a class="mega-link sm" href="service-ai.html#genai">Generative AI for Operations</a>
-            <a class="mega-link sm" href="service-ai.html#automation">Intelligent Automation</a>
-            <a class="mega-link sm" href="service-zoho.html#crm">Zoho CRM Implementation</a>
-            <a class="mega-link sm" href="service-zoho.html#one">Zoho One Deployment</a>
+            <span class="mega-cat" data-de="Kompetenzen">Capabilities</span>
+            <a class="mega-link sm" href="service-ai.html#readiness" data-de="AI-Readiness-Assessment">AI Readiness Assessment</a>
+            <a class="mega-link sm" href="service-ai.html#data" data-de="Datenfundament für KI">Data Foundations</a>
+            <a class="mega-link sm" href="service-ai.html#genai" data-de="Generative KI im Betrieb">Generative AI for Operations</a>
+            <a class="mega-link sm" href="service-ai.html#automation" data-de="Intelligente Automatisierung">Intelligent Automation</a>
+            <a class="mega-link sm" href="service-zoho.html#crm" data-de="Zoho-CRM-Implementierung">Zoho CRM Implementation</a>
+            <a class="mega-link sm" href="service-zoho.html#one" data-de="Zoho-One-Einführung">Zoho One Deployment</a>
           </div>
         </div>
         <a class="mega-media" href="service-ai.html" style="background-image:url('images/robotics.jpg')" aria-label="AI Consulting"></a>
@@ -56,33 +68,17 @@
       <div class="mega-panel" data-menu="industries">
         <div class="mega-cols">
           <div class="mega-col">
-            <span class="mega-cat">By Industry</span>
-            <a class="mega-link sm" href="industry-manufacturing.html">Manufacturing &amp; Mittelstand</a>
-            <a class="mega-link sm" href="industry-logistics.html">Logistics &amp; Supply Chain</a>
-            <a class="mega-link sm" href="industry-finance.html">Finance &amp; Insurance</a>
+            <span class="mega-cat" data-de="Nach Branche">By Industry</span>
+            <a class="mega-link sm" href="industry-manufacturing.html" data-de="Fertigung &amp; Mittelstand">Manufacturing &amp; Mittelstand</a>
+            <a class="mega-link sm" href="industry-logistics.html" data-de="Logistik &amp; Supply Chain">Logistics &amp; Supply Chain</a>
           </div>
           <div class="mega-col">
             <span class="mega-cat">&nbsp;</span>
-            <a class="mega-link sm" href="industry-professional-services.html">Professional Services</a>
-            <a class="mega-link sm" href="industry-healthcare.html">Healthcare Operations</a>
-            <a class="mega-link sm" href="industry-b2b-sales.html">B2B Sales Organisations</a>
+            <a class="mega-link sm" href="industry-finance.html" data-de="Finanzen &amp; Versicherung">Finance &amp; Insurance</a>
+            <a class="mega-link sm" href="industry-healthcare.html" data-de="Gesundheitswesen">Healthcare Operations</a>
           </div>
         </div>
         <a class="mega-media" href="industry-finance.html" style="background-image:url('images/finance.jpg')" aria-label="Industries"></a>
-      </div>
-
-      <!-- Insights -->
-      <div class="mega-panel" data-menu="insights">
-        <div class="mega-cols">
-          <div class="mega-col wide">
-            <span class="mega-cat">How we engage</span>
-            <a class="mega-link" href="insights.html#understanding">Understanding call — 30 minutes</a>
-            <a class="mega-link" href="insights.html#assessment">Assessment — 1 to 2 weeks</a>
-            <a class="mega-link" href="insights.html#build">Build and deploy — 4 to 8 weeks</a>
-            <a class="mega-link" href="insights.html#handover">Handover and support</a>
-          </div>
-        </div>
-        <a class="mega-media" href="insights.html" style="background-image:url('images/aerospace.jpg')" aria-label="Insights"></a>
       </div>
     </div>
   </header>
@@ -92,17 +88,17 @@
     <div class="hero-bg" aria-hidden="true"></div>
     <div class="hero-overlay" aria-hidden="true"></div>
     <div class="hero-content">
-      <span class="hero-crumb"><a href="index.html">Home</a><span class="sep">/</span><a href="index.html#industries">Industries</a><span class="sep">/</span>Finance &amp; Insurance</span>
-      <h1 class="hero-title">Modernise without<br/>creating exposure.</h1>
-      <p class="hero-sub">Finance and insurance are regulated, data-sensitive, and under pressure to move faster. We build AI systems with full audit trails, controlled data access and explainability built in — so your legal team is never surprised.</p>
+      <span class="hero-crumb"><a href="index.html" data-de="Start">Home</a><span class="sep">/</span><a href="index.html#industries" data-de="Branchen">Industries</a><span class="sep">/</span><span data-de="Finanzen &amp; Versicherung">Finance &amp; Insurance</span></span>
+      <h1 class="hero-title" data-de="Modernisieren, ohne&lt;br/&gt;Risiken zu schaffen.">Modernise without<br/>creating exposure.</h1>
+      <p class="hero-sub" data-de="Finanzen und Versicherung sind reguliert und datensensibel. Wir bauen KI mit vollständigen Audit-Trails, kontrolliertem Zugriff und eingebauter Erklärbarkeit — damit Ihre Rechtsabteilung nie überrascht wird.">Finance and insurance are regulated and data-sensitive. We build AI with full audit trails, controlled access and explainability built in — so your legal team is never surprised.</p>
       <div class="hero-cta-row">
-        <a href="mailto:kailash@mpasys.ai" class="btn-hero">Book a 30-Minute Call</a>
-        <a href="#challenges" class="btn-hero-ghost">See where we help →</a>
+        <a href="mailto:kailash@mpasys.ai" class="btn-hero" data-de="30-Minuten-Gespräch buchen">Book a 30-Minute Call</a>
+        <a href="#challenges" class="btn-hero-ghost" data-de="Wo wir helfen →">See where we help →</a>
       </div>
       <div class="hero-metrics">
-        <div class="hero-metric"><b>Audit-ready</b><span>Every decision traceable</span></div>
-        <div class="hero-metric"><b>EU AI Act</b><span>Implementation ready</span></div>
-        <div class="hero-metric"><b>GDPR</b><span>By architecture, not bolt-on</span></div>
+        <div class="hero-metric"><b data-de="Audit-fähig">Audit-ready</b><span data-de="Jede Entscheidung nachvollziehbar">Every decision traceable</span></div>
+        <div class="hero-metric"><b>EU AI Act</b><span data-de="Bereit für die Umsetzung">Implementation ready</span></div>
+        <div class="hero-metric"><b data-de="DSGVO">GDPR</b><span data-de="Architektur, kein Nachrüsten">By architecture, not bolt-on</span></div>
       </div>
     </div>
   </section>
@@ -111,12 +107,12 @@
   <section class="pageintro section-light">
     <div class="pageintro-inner">
       <div>
-        <span class="pageintro-eyebrow">Your industry</span>
-        <h2 class="pageintro-title">In a regulated business, an AI you cannot explain is a liability — not an asset.</h2>
+        <span class="pageintro-eyebrow" data-de="Ihre Branche">Your industry</span>
+        <h2 class="pageintro-title" data-de="In einem regulierten Geschäft ist eine KI, die Sie nicht erklären können, eine Haftung — kein Vorteil.">In a regulated business, an AI you cannot explain is a liability — not an asset.</h2>
       </div>
       <div class="pageintro-lead">
-        <p>The opportunity in finance and insurance is real: faster underwriting prep, quicker document review, less manual reconciliation. The risk is equally real if the system cannot show how it reached a decision.</p>
-        <p>We architect from compliance, not toward it. Every data flow is documented, every output is traceable, and access is controlled by design — so you can move faster and still answer to your regulator.</p>
+        <p data-de="Die Chance in Finanzen und Versicherung ist real: schnellere Underwriting-Vorbereitung, zügigere Dokumentenprüfung, weniger manuelle Abstimmung. Das Risiko ist genauso real, wenn das System nicht zeigen kann, wie es zu einer Entscheidung kam.">The opportunity in finance and insurance is real: faster underwriting prep, quicker document review, less manual reconciliation. The risk is equally real if the system cannot show how it reached a decision.</p>
+        <p data-de="Wir architektieren von der Compliance aus, nicht auf sie zu. Jeder Datenfluss ist dokumentiert, jedes Ergebnis nachvollziehbar, jeder Zugriff kontrolliert — damit Sie schneller werden und Ihrem Regulator trotzdem jede Antwort geben können.">We architect from compliance, not toward it. Every data flow is documented, every output is traceable, and access is controlled by design — so you can move faster and still answer to your regulator.</p>
       </div>
     </div>
   </section>
@@ -124,133 +120,179 @@
   <!-- ===================== CHALLENGES ===================== -->
   <section class="industries section-light" id="challenges">
     <div class="industries-head">
-      <span class="services-eyebrow" style="display:block;margin-bottom:12px;">The pressure points</span>
-      <h2 class="industries-title">Three constraints that make AI in finance harder than it looks.</h2>
-      <p class="industries-sub">These are the reasons most financial-services AI projects stall at the compliance review. We design for them from the start.</p>
+      <span class="services-eyebrow" style="display:block;margin-bottom:12px;" data-de="Die Druckpunkte">The pressure points</span>
+      <h2 class="industries-title" data-de="Drei Randbedingungen, die KI im Finanzsektor schwerer machen, als sie aussieht.">Three constraints that make AI in finance harder than it looks.</h2>
+      <p class="industries-sub" data-de="An diesen Punkten scheitern die meisten KI-Projekte im Finanzbereich an der Compliance-Prüfung. Wir gestalten von Anfang an dafür.">These are the reasons most financial-services AI projects stall at the compliance review. We design for them from the start.</p>
     </div>
-    <div class="industries-grid">
-      <article class="ind-card">
-        <h3>Explainability requirements</h3>
-        <p>A black-box model that cannot justify an outcome is a non-starter when an auditor, a regulator or a customer asks why a decision was made.</p>
-      </article>
-      <article class="ind-card">
-        <h3>Sensitive data, strict access</h3>
-        <p>Personal and financial data carries hard obligations on residency, access and retention — and a single careless integration creates real exposure.</p>
-      </article>
-      <article class="ind-card">
-        <h3>Manual document &amp; reconciliation work</h3>
-        <p>Skilled staff spend hours on document review, data entry and reconciliation that is repetitive enough to automate but sensitive enough to need control.</p>
-      </article>
+    <div class="pp-marquee">
+      <div class="pp-track">
+        <div class="pp-set">
+          <article class="pp-card">
+            <div class="pp-media" style="background-image:url('images/finance.jpg')"></div>
+            <div class="pp-scrim"></div>
+            <div class="pp-content">
+              <span class="pp-num">01</span>
+              <h3 data-de="Erklärbarkeitsanforderungen">Explainability requirements</h3>
+              <p data-de="Ein Black-Box-Modell, das ein Ergebnis nicht begründen kann, ist ein Ausschlusskriterium — spätestens wenn Auditor, Regulator oder Kunde fragt, warum entschieden wurde.">A black-box model that cannot justify an outcome is a non-starter when an auditor, a regulator or a customer asks why a decision was made.</p>
+            </div>
+          </article>
+          <article class="pp-card">
+            <div class="pp-media" style="background-image:url('images/defense.jpg')"></div>
+            <div class="pp-scrim"></div>
+            <div class="pp-content">
+              <span class="pp-num">02</span>
+              <h3 data-de="Sensible Daten, strenger Zugriff">Sensitive data, strict access</h3>
+              <p data-de="Personen- und Finanzdaten bringen harte Pflichten bei Residenz, Zugriff und Aufbewahrung mit — eine einzige unbedachte Integration schafft echte Angriffsfläche.">Personal and financial data carries hard obligations on residency, access and retention — and a single careless integration creates real exposure.</p>
+            </div>
+          </article>
+          <article class="pp-card">
+            <div class="pp-media" style="background-image:url('images/research.jpg')"></div>
+            <div class="pp-scrim"></div>
+            <div class="pp-content">
+              <span class="pp-num">03</span>
+              <h3 data-de="Manuelle Dokumenten- &amp; Abstimmarbeit">Manual document &amp; reconciliation work</h3>
+              <p data-de="Qualifizierte Mitarbeiter verbringen Stunden mit Dokumentenprüfung, Datenerfassung und Abstimmung — repetitiv genug zum Automatisieren, sensibel genug für strenge Kontrolle.">Skilled staff spend hours on document review, data entry and reconciliation that is repetitive enough to automate but sensitive enough to need control.</p>
+            </div>
+          </article>
+        </div>
+        <div class="pp-set" aria-hidden="true">
+          <article class="pp-card">
+            <div class="pp-media" style="background-image:url('images/finance.jpg')"></div>
+            <div class="pp-scrim"></div>
+            <div class="pp-content">
+              <span class="pp-num">01</span>
+              <h3 data-de="Erklärbarkeitsanforderungen">Explainability requirements</h3>
+              <p data-de="Ein Black-Box-Modell, das ein Ergebnis nicht begründen kann, ist ein Ausschlusskriterium — spätestens wenn Auditor, Regulator oder Kunde fragt, warum entschieden wurde.">A black-box model that cannot justify an outcome is a non-starter when an auditor, a regulator or a customer asks why a decision was made.</p>
+            </div>
+          </article>
+          <article class="pp-card">
+            <div class="pp-media" style="background-image:url('images/defense.jpg')"></div>
+            <div class="pp-scrim"></div>
+            <div class="pp-content">
+              <span class="pp-num">02</span>
+              <h3 data-de="Sensible Daten, strenger Zugriff">Sensitive data, strict access</h3>
+              <p data-de="Personen- und Finanzdaten bringen harte Pflichten bei Residenz, Zugriff und Aufbewahrung mit — eine einzige unbedachte Integration schafft echte Angriffsfläche.">Personal and financial data carries hard obligations on residency, access and retention — and a single careless integration creates real exposure.</p>
+            </div>
+          </article>
+          <article class="pp-card">
+            <div class="pp-media" style="background-image:url('images/research.jpg')"></div>
+            <div class="pp-scrim"></div>
+            <div class="pp-content">
+              <span class="pp-num">03</span>
+              <h3 data-de="Manuelle Dokumenten- &amp; Abstimmarbeit">Manual document &amp; reconciliation work</h3>
+              <p data-de="Qualifizierte Mitarbeiter verbringen Stunden mit Dokumentenprüfung, Datenerfassung und Abstimmung — repetitiv genug zum Automatisieren, sensibel genug für strenge Kontrolle.">Skilled staff spend hours on document review, data entry and reconciliation that is repetitive enough to automate but sensitive enough to need control.</p>
+            </div>
+          </article>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- ===================== SOLUTIONS ===================== -->
-  <section class="services section-light">
+  <!-- ===================== SOLUTIONS (sticky card-stack) ===================== -->
+  <section class="services section-light svc-stack">
     <div class="services-head">
-      <span class="services-eyebrow">How we turn it around</span>
-      <h2 class="services-title">AI and Zoho built for audit — controllable, traceable, explainable.</h2>
+      <span class="services-eyebrow" data-de="So drehen wir es um">How we turn it around</span>
+      <h2 class="services-title" data-de="KI und Zoho, gebaut fürs Audit — kontrollierbar, nachvollziehbar, erklärbar.">AI and Zoho built for audit — controllable, traceable, explainable.</h2>
     </div>
-    <div class="svc-grid">
-      <article class="svc-block">
-        <span class="svc-num">01</span>
-        <h4>Explainable document AI</h4>
-        <p>LLM workflows for policy, claims and contract review that show their sources and reasoning — so a reviewer can verify every extraction instead of trusting a black box.</p>
-      </article>
-      <article class="svc-block">
-        <span class="svc-num">02</span>
-        <h4>Controlled-access architecture</h4>
-        <p>Systems designed around data residency, role-based access and retention rules from day one, with every data flow documented for your legal and compliance teams.</p>
-      </article>
-      <article class="svc-block">
-        <span class="svc-num">03</span>
-        <h4>Auditable automation</h4>
-        <p>Reconciliation, classification and routing automated with full audit trails — you keep human sign-off where it matters, the system handles the repetitive volume.</p>
-      </article>
-      <article class="svc-block">
-        <span class="svc-num">04</span>
-        <h4>Zoho for regulated operations</h4>
-        <p>A CRM and back-office configured with the controls your sector requires — clean data, consent handling, and integrations that keep sensitive information where it belongs.</p>
-      </article>
+    <div class="svc-stack-wrap">
+      <div class="svc-stack-item">
+        <article class="svc-stack-card">
+          <span class="svc-num">01</span>
+          <div class="svc-stack-body">
+            <h4 data-de="Erklärbare Dokumenten-KI">Explainable document AI</h4>
+            <p data-de="LLM-Workflows für Policen-, Schadens- und Vertragsprüfung, die Quellen und Begründung offenlegen — ein Prüfer kann jede Extraktion verifizieren, statt einer Black Box zu vertrauen.">LLM workflows for policy, claims and contract review that show their sources and reasoning — so a reviewer can verify every extraction instead of trusting a black box.</p>
+          </div>
+        </article>
+      </div>
+      <div class="svc-stack-item">
+        <article class="svc-stack-card">
+          <span class="svc-num">02</span>
+          <div class="svc-stack-body">
+            <h4 data-de="Architektur mit kontrolliertem Zugriff">Controlled-access architecture</h4>
+            <p data-de="Systeme, die von Tag eins um Datenresidenz, rollenbasierten Zugriff und Aufbewahrungsregeln herum entworfen sind — jeder Datenfluss dokumentiert für Legal und Compliance.">Systems designed around data residency, role-based access and retention rules from day one, with every data flow documented for your legal and compliance teams.</p>
+          </div>
+        </article>
+      </div>
+      <div class="svc-stack-item">
+        <article class="svc-stack-card">
+          <span class="svc-num">03</span>
+          <div class="svc-stack-body">
+            <h4 data-de="Auditierbare Automatisierung">Auditable automation</h4>
+            <p data-de="Abstimmung, Klassifizierung und Routing automatisiert mit vollständigen Audit-Trails — menschliche Freigabe bleibt, wo sie zählt; das System übernimmt das repetitive Volumen.">Reconciliation, classification and routing automated with full audit trails — you keep human sign-off where it matters, the system handles the repetitive volume.</p>
+          </div>
+        </article>
+      </div>
+      <div class="svc-stack-item">
+        <article class="svc-stack-card">
+          <span class="svc-num">04</span>
+          <div class="svc-stack-body">
+            <h4 data-de="Zoho für regulierte Prozesse">Zoho for regulated operations</h4>
+            <p data-de="CRM und Backoffice, konfiguriert mit den Kontrollen, die Ihr Sektor verlangt — saubere Daten, Consent-Handling und Integrationen, die sensible Informationen dort halten, wo sie hingehören.">A CRM and back-office configured with the controls your sector requires — clean data, consent handling, and integrations that keep sensitive information where it belongs.</p>
+          </div>
+        </article>
+      </div>
     </div>
-    <a href="mailto:kailash@mpasys.ai" class="svc-cta">Tell us what compliance requires →</a>
+    <a href="mailto:kailash@mpasys.ai" class="svc-cta" data-de="Sagen Sie uns, was Ihre Compliance verlangt →">Tell us what compliance requires →</a>
   </section>
 
   <!-- ===================== STATEMENT ===================== -->
   <section class="statement section-light">
     <div class="statement-inner">
-      <p>If your legal team asks how data flows through the AI, we have a clean answer ready. <b>Every time.</b> Compliance is the architecture, not an afterthought.</p>
-      <span class="statement-by">Finance &amp; Insurance · GDPR &amp; EU AI Act ready</span>
+      <p data-de="Wenn Ihre Rechtsabteilung fragt, wie Daten durch die KI fließen, haben wir eine saubere Antwort parat. &lt;b&gt;Jedes Mal.&lt;/b&gt; Compliance ist die Architektur, kein Nachtrag.">If your legal team asks how data flows through the AI, we have a clean answer ready. <b>Every time.</b> Compliance is the architecture, not an afterthought.</p>
+      <span class="statement-by" data-de="Finanzen &amp; Versicherung · DSGVO &amp; EU AI Act ready">Finance &amp; Insurance · GDPR &amp; EU AI Act ready</span>
     </div>
   </section>
 
   <!-- ===================== PROOF STRIP ===================== -->
   <section class="proof">
     <div class="proof-inner">
-      <article class="proof-block"><span class="proof-num">100%</span><span class="proof-label">Documented, auditable data flows</span><span class="proof-sub">Every input, decision and output traceable</span></article>
-      <article class="proof-block"><span class="proof-num">Explainable</span><span class="proof-label">Outputs your reviewers can verify</span><span class="proof-sub">No unexplained black-box decisions</span></article>
-      <article class="proof-block"><span class="proof-num">Role-based</span><span class="proof-label">Access control by design</span><span class="proof-sub">Residency and retention handled correctly</span></article>
-      <article class="proof-block"><span class="proof-num">4–8 wks</span><span class="proof-label">To first live deployment</span><span class="proof-sub">Production-grade, not a compliance-blocked pilot</span></article>
-    </div>
-  </section>
-
-  <!-- ===================== HOW WE ENGAGE ===================== -->
-  <section class="engage" id="engage">
-    <div class="engage-head">
-      <h2 class="engage-title">From first conversation to a compliant live system — exactly how we work.</h2>
-      <p class="engage-sub">We move fast, we stay close, and we bring your compliance stakeholders in early — not at the end when it is expensive to change.</p>
-    </div>
-    <div class="engage-grid">
-      <article class="step-card"><span class="step-num">01</span><h3>Understanding call — 30 minutes</h3><p>The use case, the data, and the regulatory constraints around it.</p></article>
-      <article class="step-card"><span class="step-num">02</span><h3>Assessment — 1 to 2 weeks</h3><p>A process, data and compliance review with a clear build plan.</p></article>
-      <article class="step-card"><span class="step-num">03</span><h3>Build and deploy — 4 to 8 weeks</h3><p>Short cycles with audit trails and access controls baked in.</p></article>
-      <article class="step-card"><span class="step-num">04</span><h3>Handover and support</h3><p>Documentation your auditors can read, plus support through go-live.</p></article>
+      <article class="proof-block"><span class="proof-num">100%</span><span class="proof-label" data-de="Dokumentierte, auditierbare Datenflüsse">Documented, auditable data flows</span><span class="proof-sub" data-de="Jeder Input, jede Entscheidung, jedes Ergebnis nachvollziehbar">Every input, decision and output traceable</span></article>
+      <article class="proof-block"><span class="proof-num" data-de="Erklärbar">Explainable</span><span class="proof-label" data-de="Ergebnisse, die Ihre Prüfer verifizieren können">Outputs your reviewers can verify</span><span class="proof-sub" data-de="Keine unerklärten Black-Box-Entscheidungen">No unexplained black-box decisions</span></article>
+      <article class="proof-block"><span class="proof-num" data-de="Rollenbasiert">Role-based</span><span class="proof-label" data-de="Zugriffskontrolle by Design">Access control by design</span><span class="proof-sub" data-de="Residenz und Aufbewahrung korrekt gehandhabt">Residency and retention handled correctly</span></article>
+      <article class="proof-block"><span class="proof-num" data-de="4–8 Wo.">4–8 wks</span><span class="proof-label" data-de="Bis zum ersten Live-Einsatz">To first live deployment</span><span class="proof-sub" data-de="Produktionsreif, kein compliance-blockierter Pilot">Production-grade, not a compliance-blocked pilot</span></article>
     </div>
   </section>
 
   <!-- ===================== CTA ===================== -->
   <section class="cta">
     <div class="cta-inner">
-      <h2 class="cta-title">The future of your<br/>operation starts here.</h2>
-      <p class="cta-copy">Take 30 minutes with us. We will tell you honestly where AI creates measurable value in your operation without creating compliance exposure — and where it does not. No sales deck, just a direct conversation.</p>
-      <a href="mailto:kailash@mpasys.ai" class="btn-dark">Book a 30-Minute Call
+      <h2 class="cta-title" data-de="Die Zukunft Ihres&lt;br/&gt;Betriebs beginnt hier.">The future of your<br/>operation starts here.</h2>
+      <p class="cta-copy" data-de="Nehmen Sie sich 30 Minuten mit uns. Wir sagen Ihnen ehrlich, wo KI in Ihrem regulierten Umfeld messbaren Wert schafft — und wo nicht. Kein Sales-Deck, ein direktes Gespräch.">Take 30 minutes with us. We will tell you honestly where AI creates real, measurable value in your regulated environment — and where it does not. No sales deck, just a direct conversation.</p>
+      <a href="mailto:kailash@mpasys.ai" class="btn-dark"><span data-de="30-Minuten-Gespräch buchen">Book a 30-Minute Call</span>
         <span class="btn-dark-arrow"><svg viewBox="0 0 24 24" width="14" height="14"><path d="M9 6 L15 12 L9 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
       </a>
-      <p class="cta-mail">Or email directly: <a href="mailto:kailash@mpasys.ai">kailash@mpasys.ai</a></p>
+      <p class="cta-mail"><span data-de="Oder direkt per E-Mail:">Or email directly:</span> <a href="mailto:kailash@mpasys.ai">kailash@mpasys.ai</a></p>
       <div class="cta-marks" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
     </div>
   </section>
 
   <!-- ===================== FOOTER ===================== -->
   <footer class="footer">
-    <h2 class="footer-big">Helping German businesses make AI work. Since day one.</h2>
+    <h2 class="footer-big" data-de="Wir bringen KI in deutschen Unternehmen zum Laufen. Von Anfang an.">Helping German businesses make AI work. Since day one.</h2>
     <div class="footer-cols">
       <div class="footer-col">
-        <span class="footer-col-h">Services</span>
-        <a href="service-ai.html">AI Consulting &amp; Engineering</a>
-        <a href="service-zoho.html#crm">Zoho CRM Implementation</a>
-        <a href="service-zoho.html#one">Zoho One Deployment</a>
-        <a href="service-ai.html#automation">Intelligent Automation</a>
-        <a href="service-ai.html#readiness">AI Readiness Assessment</a>
-        <a href="service-ai.html#custom">Custom AI Products</a>
+        <span class="footer-col-h" data-de="Leistungen">Services</span>
+        <a href="service-ai.html" data-de="KI-Beratung &amp; Engineering">AI Consulting &amp; Engineering</a>
+        <a href="service-ai.html#data" data-de="Datenfundament für KI">Data Foundations</a>
+        <a href="service-ai.html#automation" data-de="Intelligente Automatisierung">Intelligent Automation</a>
+        <a href="service-ai.html#readiness" data-de="AI-Readiness-Assessment">AI Readiness Assessment</a>
+        <a href="service-zoho.html#crm" data-de="Zoho-CRM-Implementierung">Zoho CRM Implementation</a>
+        <a href="service-zoho.html#one" data-de="Zoho-One-Einführung">Zoho One Deployment</a>
       </div>
       <div class="footer-col">
-        <span class="footer-col-h">Industries</span>
-        <a href="industry-manufacturing.html">Manufacturing &amp; Mittelstand</a>
-        <a href="industry-logistics.html">Logistics &amp; Supply Chain</a>
-        <a href="industry-finance.html">Finance &amp; Insurance</a>
-        <a href="industry-professional-services.html">Professional Services</a>
-        <a href="industry-healthcare.html">Healthcare Operations</a>
-        <a href="industry-b2b-sales.html">B2B Sales</a>
+        <span class="footer-col-h" data-de="Branchen">Industries</span>
+        <a href="industry-manufacturing.html" data-de="Fertigung &amp; Mittelstand">Manufacturing &amp; Mittelstand</a>
+        <a href="industry-logistics.html" data-de="Logistik &amp; Supply Chain">Logistics &amp; Supply Chain</a>
+        <a href="industry-finance.html" data-de="Finanzen &amp; Versicherung">Finance &amp; Insurance</a>
+        <a href="industry-healthcare.html" data-de="Gesundheitswesen">Healthcare Operations</a>
       </div>
       <div class="footer-col">
-        <span class="footer-col-h">Company</span>
-        <a href="index.html#about">About mpasys.ai</a>
-        <a href="cases.html">Case Studies</a>
-        <a href="insights.html">Insights</a>
-        <a href="mailto:kailash@mpasys.ai">Contact</a>
+        <span class="footer-col-h" data-de="Unternehmen">Company</span>
+        <a href="about.html" data-de="Über mpasys.ai">About mpasys.ai</a>
+        <a href="mailto:kailash@mpasys.ai" data-de="Kontakt">Contact</a>
       </div>
       <div class="footer-col">
-        <span class="footer-col-h">Legal</span>
+        <span class="footer-col-h" data-de="Rechtliches">Legal</span>
         <a href="#">Impressum</a>
         <a href="#">Datenschutzerklärung</a>
         <a href="#">Cookie-Einstellungen</a>

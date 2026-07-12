@@ -1,0 +1,9 @@
+# Unused heavy source videos — the web-optimized *-hero.mp4 versions are what the site uses.
+# Kept locally, never committed (the raw sources exceed GitHub's file-size limit).
+Videos/Healtcare.mp4
+Videos/Manufacturing.mp4
+Videos/Supply chain & Logistics.mp4
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db

@@ -16,6 +16,10 @@
   --brand1:#7B5EA7;
   --brand2:#9B4FD8;
   --brand-grad:linear-gradient(90deg,#7B5EA7,#9B4FD8);
+  /* on-dark variants: same brand hues lifted for legibility over dark video/photo */
+  --brand-grad-bright:linear-gradient(92deg,#B9A0EC 0%,#D4B5F9 60%,#C99AF2 100%);
+  --hero-ink:#f4f2fa;                    /* platinum-lavender headline on dark film */
+  --hero-body:rgba(226,224,240,.78);     /* body copy on dark film */
   --font:"Hanken Grotesk",-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
   --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
   --maxw:1280px;
@@ -45,6 +49,15 @@ section{position:relative;}
   box-shadow:0 1px 0 rgba(0,0,0,.08);
 }
 .site-header.light{background:rgba(255,255,255,.97);color:var(--black);}
+/* Home hero: transparent glass bar with light text (contrast over the dark video).
+   JS drives opacity + translateY so it glides in across the hero scroll. */
+.site-header.hero-float{background:transparent;backdrop-filter:none;-webkit-backdrop-filter:none;box-shadow:none;color:#fff;}
+.site-header.hero-float .nav-item{opacity:1;text-shadow:0 1px 10px rgba(2,4,10,.6);}
+.site-header.hero-float .logo-img{filter:brightness(0) invert(1) drop-shadow(0 1px 8px rgba(2,4,10,.5));} /* white logo over video */
+.site-header.hero-float .btn-demo{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.55);color:#fff;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);}
+.site-header.hero-float .btn-demo:hover{background:rgba(255,255,255,.2);}
+.site-header.hero-float .nav-toggle{border-color:rgba(255,255,255,.5);}
+.site-header.hero-float .nav-toggle span{background:#fff;}
 .header-inner{
   max-width:1480px;margin:0 auto;padding:18px var(--pad);
   display:flex;align-items:center;gap:40px;
@@ -62,6 +75,11 @@ section{position:relative;}
 .site-header.light .btn-login{border-color:rgba(0,0,0,.15);}
 .btn-login:hover{opacity:.7;}
 .btn-demo{font-size:15px;background:var(--black);color:var(--white);padding:10px 24px;border-radius:8px;transition:.2s;}
+/* EN/DE language switch — inherits header text colour in every header state */
+.lang-toggle{font-family:var(--mono);font-size:12px;letter-spacing:.08em;font-weight:500;color:inherit;background:none;border:1px solid rgba(0,0,0,.22);border-radius:8px;padding:8px 12px;cursor:pointer;transition:.2s;}
+.lang-toggle:hover{background:rgba(0,0,0,.06);}
+.site-header.hero-float .lang-toggle{border-color:rgba(255,255,255,.5);}
+.site-header.hero-float .lang-toggle:hover{background:rgba(255,255,255,.14);}
 .site-header.light .btn-demo{background:var(--black);}
 .btn-demo:hover{opacity:.85;}
 .nav-group{position:relative;}
@@ -104,7 +122,30 @@ section{position:relative;}
 .mega-media:hover{transform:scale(1.012);}
 
 /* ===================== HERO ===================== */
+/* scrub wrapper: the hero pins for several screens while the video frames
+   follow the scrollbar and the content cross-fades through 4 phases (desktop).
+   On touch devices it collapses to a tall, static, stacked hero. */
+.hero-scrub{height:640vh;position:relative;background:#000;}
+.hero-scrub .hero{position:sticky;top:0;}
 .hero{height:100vh;min-height:680px;background:#000;overflow:hidden;display:flex;align-items:center;}
+
+/* stacked, flex-centred content phases (desktop scrub).
+   Centering is via flex — NOT transform — so GSAP's y-fade can't knock it off-centre. */
+.hero-phase{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  padding:0 var(--pad);opacity:0;pointer-events:none;will-change:opacity,transform;text-align:center;}
+.hero-phase[data-phase="0"]{opacity:1;pointer-events:auto;}
+.hero-phase:not([data-phase="0"]) .hero-title{font-size:clamp(30px,4.4vw,58px);}
+
+@media (hover:none),(pointer:coarse){
+  .hero-scrub{height:auto;}
+  .hero-scrub .hero{position:relative;height:auto;min-height:auto;display:block;padding:120px 0 72px;}
+  .hero-content{position:static;display:flex;flex-direction:column;gap:56px;}
+  .hero-phase{position:static;opacity:1;transform:none;pointer-events:auto;padding:0;display:block;}
+  /* on phones the scrub headline shrinks so the stacked phases read as a clean list */
+  .hero-phase .hero-title{font-size:clamp(26px,7.4vw,40px);}
+  .hero-phase:not([data-phase="0"]) .hero-title{font-size:clamp(24px,6.6vw,34px);}
+  .hero-overlay{background:linear-gradient(180deg,rgba(4,7,16,.74),rgba(4,7,16,.82));}
+}
 .hero-bg{
   position:absolute;inset:0;
   background:
@@ -129,13 +170,34 @@ section{position:relative;}
   transform:scale(1.12);
 }
 .hero-bg.paused{}
-.hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;}
-.hero-overlay{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(6,11,24,.55),rgba(6,11,24,.35) 45%,rgba(6,11,24,.75));}
+.hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;transform-origin:center center;}
+/* centered scrim: a soft elliptical pool of shadow behind the (centered) copy,
+   edges left vivid; gentle top/bottom vignette. Legibility comes from the type
+   treatment, not from dimming the film. */
+/* default overlay: protects a left-aligned text column, leaves the right vivid (industry/service pages) */
+.hero-overlay{position:absolute;inset:0;z-index:1;background:
+  linear-gradient(90deg,rgba(2,4,10,.82) 0%,rgba(2,4,10,.52) 38%,rgba(2,4,10,.14) 68%,rgba(2,4,10,0) 100%),
+  linear-gradient(180deg,rgba(2,4,10,.42),rgba(2,4,10,0) 28%,rgba(2,4,10,0) 60%,rgba(2,4,10,.56));}
+/* homepage scrub hero: centred pool behind the centred phase copy */
+.hero-scrub .hero-overlay{background:
+  radial-gradient(ellipse 66% 54% at 50% 52%, rgba(2,4,10,.68), rgba(2,4,10,.34) 50%, rgba(2,4,10,.05) 76%),
+  linear-gradient(180deg,rgba(2,4,10,.5) 0%,rgba(2,4,10,.06) 20%,rgba(2,4,10,.06) 64%,rgba(2,4,10,.62) 100%);}
+/* default hero content: left-aligned column (industry/service pages) */
 .hero-content{position:relative;z-index:2;width:100%;max-width:1480px;margin:0 auto;padding:0 var(--pad);}
+/* homepage scrub hero: content layer fills the pinned stage so phases can flex-centre */
+.hero-scrub .hero-content{position:absolute;inset:0;max-width:none;margin:0;padding:0;}
 .hero-title{
-  color:var(--white);font-weight:400;letter-spacing:-.03em;
-  font-size:clamp(40px,5.6vw,76px);line-height:1.0;max-width:1180px;
+  font-weight:300;letter-spacing:-.03em;
+  font-size:clamp(40px,5.6vw,76px);line-height:1.06;max-width:1180px;margin:0;
+  /* ice-to-lavender gradient fill; drop-shadow (not text-shadow) so it works with clipped text */
+  background:linear-gradient(180deg,#ffffff 0%,#f0eafb 46%,#cbb6ef 100%);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;
+  filter:drop-shadow(0 2px 6px rgba(2,4,10,.6)) drop-shadow(0 10px 34px rgba(2,4,10,.5));
 }
+.hero-scrub .hero-title{margin:0 auto;}
+/* luminous brand-gradient accent inside hero headlines */
+.hero-accent{background:var(--brand-grad-bright);-webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;color:transparent;font-style:normal;text-shadow:none;}
 .scroll-explore{
   position:absolute;z-index:2;right:var(--pad);bottom:46px;
   display:flex;align-items:center;gap:16px;color:var(--white);font-size:14px;font-weight:500;
@@ -334,13 +396,16 @@ section{position:relative;}
 .logo-accent{background:var(--brand-grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;font-weight:700;}
 
 /* hero eyebrow / subheadline / CTA */
-.hero-eyebrow{display:block;font-family:var(--mono);font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:#c9b8e4;margin-bottom:22px;}
-.hero-sub{color:rgba(255,255,255,.82);font-size:clamp(16px,1.5vw,21px);font-weight:400;line-height:1.45;max-width:680px;margin-top:26px;}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:12px;font-family:var(--mono);font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:rgba(216,201,246,.95);margin-bottom:28px;padding:9px 20px;border:1px solid rgba(206,189,240,.28);border-radius:999px;background:rgba(8,6,18,.38);}
+.hero-eyebrow::before,.hero-eyebrow::after{content:"";width:22px;height:1px;flex:none;background:var(--brand-grad-bright);}
+.hero-sub{color:#ece9f6;font-size:clamp(16px,1.4vw,20px);font-weight:400;line-height:1.55;max-width:640px;margin:26px 0 0;text-shadow:0 1px 3px rgba(2,4,10,.7),0 6px 24px rgba(2,4,10,.5);}
+.hero-scrub .hero-sub{margin:26px auto 0;}
 .hero-cta-row{display:flex;align-items:center;flex-wrap:wrap;gap:18px 26px;margin-top:38px;}
+.hero-scrub .hero-cta-row{justify-content:center;}
 .btn-hero{display:inline-block;background:var(--brand-grad);color:#fff;font-size:16px;font-weight:500;padding:14px 30px;border-radius:10px;box-shadow:0 10px 30px rgba(123,94,167,.35);transition:transform .2s,box-shadow .2s;}
 .btn-hero:hover{transform:translateY(-2px);box-shadow:0 14px 38px rgba(155,79,216,.45);}
-.btn-hero-ghost{color:rgba(255,255,255,.78);font-size:15px;border-bottom:1px solid rgba(255,255,255,.3);padding-bottom:2px;transition:color .2s,border-color .2s;}
-.btn-hero-ghost:hover{color:#fff;border-color:#fff;}
+.btn-hero-ghost{color:rgba(230,226,244,.82);font-size:15px;border-bottom:1px solid rgba(206,189,240,.35);padding-bottom:2px;text-shadow:0 1px 2px rgba(3,6,14,.45);transition:color .2s,border-color .2s;}
+.btn-hero-ghost:hover{color:#fff;border-color:rgba(212,181,249,.9);}
 
 /* social-proof ticker */
 .ticker{background:#06080f;border-top:1px solid rgba(255,255,255,.06);border-bottom:1px solid rgba(255,255,255,.06);padding:20px 0;overflow:hidden;}
@@ -424,6 +489,51 @@ section{position:relative;}
 .step-num{font-family:var(--mono);font-size:14px;font-weight:600;background:var(--brand-grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;}
 .step-card h3{font-size:19px;font-weight:500;color:#fff;margin:16px 0 14px;line-height:1.2;}
 .step-card p{font-size:14.5px;line-height:1.55;color:#9aa0ad;}
+
+/* ===================== STICKY CARD-STACK (subpage capability sections) ===================== */
+/* full-width cards that stick + scale down one-by-one as you scroll (GSAP in script.js) */
+.svc-stack-wrap{position:relative;max-width:var(--maxw);margin:0 auto;}
+.svc-stack-item{height:72vh;display:flex;justify-content:center;align-items:flex-start;}
+.svc-stack-card{
+  position:sticky;width:100%;
+  background:#fff;border:1px solid rgba(12,12,12,.08);border-radius:24px;
+  box-shadow:0 24px 60px rgba(0,0,0,.10);
+  padding:clamp(28px,4vw,56px);
+  display:grid;grid-template-columns:auto 1fr;gap:clamp(20px,4vw,56px);align-items:center;
+  transform-origin:center top;will-change:transform;
+}
+.svc-stack-card .svc-num{
+  font-family:var(--mono);font-size:clamp(44px,8vw,120px);font-weight:500;line-height:.9;
+  background:var(--brand-grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;
+}
+.svc-stack-body h4{font-size:clamp(22px,2.6vw,38px);font-weight:500;letter-spacing:-.01em;color:#0a0a0a;margin-bottom:14px;}
+.svc-stack-body p{font-size:clamp(15px,1.4vw,19px);line-height:1.55;color:#3a3a3a;max-width:760px;}
+@media(max-width:768px){
+  /* no sticky/stack on phones — render as a clean vertical list */
+  .svc-stack-item{height:auto;margin-bottom:16px;}
+  .svc-stack-card{position:static;grid-template-columns:1fr;gap:8px;box-shadow:0 10px 30px rgba(0,0,0,.06);transform:none!important;padding:26px 24px;}
+  .svc-stack-card .svc-num{font-size:34px;}
+}
+
+/* ===================== PRESSURE-POINTS DUOTONE MARQUEE (slow horizontal scroll) ===================== */
+.pp-marquee{position:relative;overflow:hidden;margin-top:6px;padding:14px 0;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);
+  mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);}
+.pp-track{display:flex;width:max-content;animation:pp-scroll 48s linear infinite;}
+.pp-marquee:hover .pp-track{animation-play-state:paused;}
+.pp-set{display:flex;}
+@keyframes pp-scroll{from{transform:translateX(-50%);}to{transform:translateX(0);}}
+.pp-card{flex:0 0 auto;width:clamp(290px,30vw,400px);aspect-ratio:4/3;margin-right:24px;
+  border-radius:20px;overflow:hidden;position:relative;box-shadow:0 18px 44px rgba(0,0,0,.16);}
+.pp-media{position:absolute;inset:0;background-size:cover;background-position:center;filter:grayscale(1) contrast(1.08);transform:scale(1.03);}
+/* brand duotone tint over the desaturated image */
+.pp-media::after{content:"";position:absolute;inset:0;background:linear-gradient(150deg,rgba(123,94,167,.66),rgba(155,79,216,.5));}
+.pp-scrim{position:absolute;inset:0;background:linear-gradient(to top,rgba(8,5,18,.9),rgba(8,5,18,.28) 55%,rgba(8,5,18,.05));}
+.pp-content{position:absolute;left:0;right:0;bottom:0;padding:26px 24px;color:#fff;z-index:2;}
+.pp-content .pp-num{font-family:var(--mono);font-size:13px;letter-spacing:.1em;color:#e0d2f7;}
+.pp-content h3{font-size:21px;font-weight:500;letter-spacing:-.01em;margin:8px 0 10px;color:#fff;}
+.pp-content p{font-size:14.5px;line-height:1.5;color:rgba(255,255,255,.86);}
+@media(prefers-reduced-motion:reduce){.pp-track{animation:none;}}
 
 /* ===================== SUBPAGE SYSTEM (service / industry / insights) ===================== */
 /* shorter hero variant for inner pages — same animated bg, denser content */
@@ -538,25 +648,39 @@ section{position:relative;}
 /* ===================== MOBILE / PHONE LAYOUT ===================== */
 @media(max-width:600px){
   :root{--pad:20px;}
+  /* decorative gradient: drop the 1.12 scale so it never spills past the viewport */
+  .hero-bg{transform:none;}
   /* header */
   .header-inner{padding:13px var(--pad);gap:12px;}
   .logo{font-size:19px;}
   .logo-img{height:22px;}
   .main-nav{display:none;}
   .nav-toggle{display:flex;}
-  .btn-demo{font-size:14px;padding:9px 16px;}
+  /* the CTA lives in the hamburger menu on phones — hide the header one so
+     logo + DE toggle + burger never overflow the bar */
+  .header-actions .btn-demo{display:none;}
+  .lang-toggle{padding:7px 11px;}
 
   /* hero */
   .hero{min-height:88vh;}
   .hero-content{padding:0 var(--pad);max-width:100%;}
+  .hero-crumb{flex-wrap:wrap;font-size:11px;letter-spacing:.08em;gap:7px;margin-bottom:18px;}
   .hero-eyebrow{font-size:11px;letter-spacing:.14em;margin-bottom:16px;}
-  .hero-title{font-size:clamp(28px,8vw,46px);line-height:1.06;max-width:100%;}
+  .hero-eyebrow::before{width:22px;}
+  .hero-title{font-size:clamp(27px,7.6vw,42px);line-height:1.08;max-width:100%;}
+  .hero.compact .hero-title{font-size:clamp(25px,7vw,38px);max-width:100%;}
   .hero-sub{font-size:15px;margin-top:18px;max-width:100%;}
-  .hero-eyebrow,.hero-title,.hero-sub,.hero-cta-row{box-sizing:border-box;overflow-wrap:break-word;}
+  .hero-eyebrow,.hero-title,.hero-sub,.hero-cta-row,.hero-crumb,.hero-metrics{box-sizing:border-box;overflow-wrap:break-word;max-width:100%;}
   .hero-cta-row{gap:14px;margin-top:26px;}
   .btn-hero{padding:13px 24px;font-size:15px;}
   .btn-hero-ghost{font-size:13px;}
   .scroll-explore{display:none;}
+
+  /* hero metrics: wrap cleanly, never force width */
+  .hero-metrics{gap:20px 26px;margin-top:34px;}
+  .hero-metric{flex:0 1 auto;min-width:0;}
+  .hero-metric b{font-size:clamp(22px,6vw,30px);}
+  .hero-metric span{font-size:12px;}
 
   /* story panels */
   .story{height:200vh;}

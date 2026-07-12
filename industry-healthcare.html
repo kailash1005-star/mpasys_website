@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Healthcare Operations — AI &amp; Zoho | mpasys.ai</title>
-  <meta name="description" content="AI and Zoho for healthcare operations. Sensitive data, strict regulation, stretched teams — we implement AI workflows that fit existing patterns instead of demanding new behaviour. GDPR-compliant." />
+  <meta name="description" content="AI for healthcare operations that fits how care teams already work. Documentation assistance, coordination workflows and controlled knowledge AI — GDPR-compliant." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
@@ -19,16 +19,27 @@
         <img src="images/mpasys-logo.png" alt="mpasys" class="logo-img" />
       </a>
       <nav class="main-nav">
-        <div class="nav-group" data-menu="services"><button class="nav-item">Services</button></div>
-        <div class="nav-group" data-menu="industries"><button class="nav-item">Industries</button></div>
-        <a class="nav-item" href="about.html">About</a>
-        <a class="nav-item" href="cases.html">Case Studies</a>
-        <div class="nav-group" data-menu="insights"><button class="nav-item">Insights</button></div>
+        <div class="nav-group" data-menu="services"><button class="nav-item" data-de="Leistungen">Services</button></div>
+        <div class="nav-group" data-menu="industries"><button class="nav-item" data-de="Branchen">Industries</button></div>
+        <a class="nav-item" href="about.html" data-de="Über uns">About</a>
       </nav>
       <div class="header-actions">
-        <a href="mailto:kailash@mpasys.ai" class="btn-demo">Talk to Us</a>
+        <button class="lang-toggle" id="langToggle" aria-label="Switch language">DE</button>
+        <a href="mailto:kailash@mpasys.ai" class="btn-demo" data-de="Gespräch vereinbaren">Talk to Us</a>
+        <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
       </div>
     </div>
+
+    <!-- ===== MOBILE MENU ===== -->
+    <nav class="mobile-nav" id="mobileNav">
+      <a href="service-ai.html" data-de="KI-Beratung &amp; Engineering">AI Consulting &amp; Engineering</a>
+      <a href="service-zoho.html" data-de="Zoho-Implementierung">Zoho Implementation</a>
+      <a href="industry-manufacturing.html" data-de="Branchen">Industries</a>
+      <a href="about.html" data-de="Über uns">About</a>
+      <a href="mailto:kailash@mpasys.ai" class="mobile-cta" data-de="Gespräch vereinbaren">Talk to Us</a>
+    </nav>
 
     <!-- ===== MEGA MENU ===== -->
     <div class="mega" id="mega">
@@ -36,17 +47,18 @@
       <div class="mega-panel" data-menu="services">
         <div class="mega-cols">
           <div class="mega-col">
-            <span class="mega-cat">Build with us</span>
-            <a class="mega-link" href="service-ai.html">AI Consulting &amp; Engineering</a>
-            <a class="mega-link" href="service-zoho.html">Zoho Implementation</a>
+            <span class="mega-cat" data-de="Mit uns umsetzen">Build with us</span>
+            <a class="mega-link" href="service-ai.html" data-de="KI-Beratung &amp; Engineering">AI Consulting &amp; Engineering</a>
+            <a class="mega-link" href="service-zoho.html" data-de="Zoho-Implementierung">Zoho Implementation</a>
           </div>
           <div class="mega-col">
-            <span class="mega-cat">Capabilities</span>
-            <a class="mega-link sm" href="service-ai.html#readiness">AI Readiness Assessment</a>
-            <a class="mega-link sm" href="service-ai.html#genai">Generative AI for Operations</a>
-            <a class="mega-link sm" href="service-ai.html#automation">Intelligent Automation</a>
-            <a class="mega-link sm" href="service-zoho.html#crm">Zoho CRM Implementation</a>
-            <a class="mega-link sm" href="service-zoho.html#one">Zoho One Deployment</a>
+            <span class="mega-cat" data-de="Kompetenzen">Capabilities</span>
+            <a class="mega-link sm" href="service-ai.html#readiness" data-de="AI-Readiness-Assessment">AI Readiness Assessment</a>
+            <a class="mega-link sm" href="service-ai.html#data" data-de="Datenfundament für KI">Data Foundations</a>
+            <a class="mega-link sm" href="service-ai.html#genai" data-de="Generative KI im Betrieb">Generative AI for Operations</a>
+            <a class="mega-link sm" href="service-ai.html#automation" data-de="Intelligente Automatisierung">Intelligent Automation</a>
+            <a class="mega-link sm" href="service-zoho.html#crm" data-de="Zoho-CRM-Implementierung">Zoho CRM Implementation</a>
+            <a class="mega-link sm" href="service-zoho.html#one" data-de="Zoho-One-Einführung">Zoho One Deployment</a>
           </div>
         </div>
         <a class="mega-media" href="service-ai.html" style="background-image:url('images/robotics.jpg')" aria-label="AI Consulting"></a>
@@ -56,33 +68,17 @@
       <div class="mega-panel" data-menu="industries">
         <div class="mega-cols">
           <div class="mega-col">
-            <span class="mega-cat">By Industry</span>
-            <a class="mega-link sm" href="industry-manufacturing.html">Manufacturing &amp; Mittelstand</a>
-            <a class="mega-link sm" href="industry-logistics.html">Logistics &amp; Supply Chain</a>
-            <a class="mega-link sm" href="industry-finance.html">Finance &amp; Insurance</a>
+            <span class="mega-cat" data-de="Nach Branche">By Industry</span>
+            <a class="mega-link sm" href="industry-manufacturing.html" data-de="Fertigung &amp; Mittelstand">Manufacturing &amp; Mittelstand</a>
+            <a class="mega-link sm" href="industry-logistics.html" data-de="Logistik &amp; Supply Chain">Logistics &amp; Supply Chain</a>
           </div>
           <div class="mega-col">
             <span class="mega-cat">&nbsp;</span>
-            <a class="mega-link sm" href="industry-professional-services.html">Professional Services</a>
-            <a class="mega-link sm" href="industry-healthcare.html">Healthcare Operations</a>
-            <a class="mega-link sm" href="industry-b2b-sales.html">B2B Sales Organisations</a>
+            <a class="mega-link sm" href="industry-finance.html" data-de="Finanzen &amp; Versicherung">Finance &amp; Insurance</a>
+            <a class="mega-link sm" href="industry-healthcare.html" data-de="Gesundheitswesen">Healthcare Operations</a>
           </div>
         </div>
         <a class="mega-media" href="industry-finance.html" style="background-image:url('images/finance.jpg')" aria-label="Industries"></a>
-      </div>
-
-      <!-- Insights -->
-      <div class="mega-panel" data-menu="insights">
-        <div class="mega-cols">
-          <div class="mega-col wide">
-            <span class="mega-cat">How we engage</span>
-            <a class="mega-link" href="insights.html#understanding">Understanding call — 30 minutes</a>
-            <a class="mega-link" href="insights.html#assessment">Assessment — 1 to 2 weeks</a>
-            <a class="mega-link" href="insights.html#build">Build and deploy — 4 to 8 weeks</a>
-            <a class="mega-link" href="insights.html#handover">Handover and support</a>
-          </div>
-        </div>
-        <a class="mega-media" href="insights.html" style="background-image:url('images/aerospace.jpg')" aria-label="Insights"></a>
       </div>
     </div>
   </header>
@@ -90,19 +86,22 @@
   <!-- ===================== HERO ===================== -->
   <section class="hero compact" id="hero">
     <div class="hero-bg" aria-hidden="true"></div>
+    <video class="hero-video" autoplay muted loop playsinline preload="auto" poster="images/healthcare-hero-poster.jpg" aria-hidden="true">
+      <source src="Videos/healthcare-hero.mp4" type="video/mp4" />
+    </video>
     <div class="hero-overlay" aria-hidden="true"></div>
     <div class="hero-content">
-      <span class="hero-crumb"><a href="index.html">Home</a><span class="sep">/</span><a href="index.html#industries">Industries</a><span class="sep">/</span>Healthcare Operations</span>
-      <h1 class="hero-title">AI that fits the way<br/>care teams already work.</h1>
-      <p class="hero-sub">Sensitive data, strict regulation, and teams too busy to adopt complicated software. We implement AI workflows that fit existing operational patterns — not ones that demand new behaviour from already stretched staff.</p>
+      <span class="hero-crumb"><a href="index.html" data-de="Start">Home</a><span class="sep">/</span><a href="index.html#industries" data-de="Branchen">Industries</a><span class="sep">/</span><span data-de="Gesundheitswesen">Healthcare Operations</span></span>
+      <h1 class="hero-title" data-de="KI, die sich der Arbeit&lt;br/&gt;der Pflegeteams anpasst.">AI that fits the way<br/>care teams already work.</h1>
+      <p class="hero-sub" data-de="Sensible Daten, strenge Regulierung und Teams ohne Zeit für komplizierte Software. Wir implementieren KI, die sich in bestehende Abläufe einfügt — ohne überlastetem Personal neues Verhalten abzuverlangen.">Sensitive data, strict regulation, and teams with no time for complicated software. We implement AI that fits existing workflows — without demanding new behaviour from stretched staff.</p>
       <div class="hero-cta-row">
-        <a href="mailto:kailash@mpasys.ai" class="btn-hero">Book a 30-Minute Call</a>
-        <a href="#challenges" class="btn-hero-ghost">See where we help →</a>
+        <a href="mailto:kailash@mpasys.ai" class="btn-hero" data-de="30-Minuten-Gespräch buchen">Book a 30-Minute Call</a>
+        <a href="#challenges" class="btn-hero-ghost" data-de="Wo wir helfen →">See where we help →</a>
       </div>
       <div class="hero-metrics">
-        <div class="hero-metric"><b>Patient data</b><span>Handled to GDPR standards</span></div>
-        <div class="hero-metric"><b>No retraining</b><span>Fits existing workflows</span></div>
-        <div class="hero-metric"><b>4–8 wks</b><span>To a live, useful system</span></div>
+        <div class="hero-metric"><b data-de="Patientendaten">Patient data</b><span data-de="Nach DSGVO-Standard behandelt">Handled to GDPR standards</span></div>
+        <div class="hero-metric"><b data-de="Kein Umlernen">No retraining</b><span data-de="Fügt sich in bestehende Abläufe">Fits existing workflows</span></div>
+        <div class="hero-metric"><b data-de="4–8 Wo.">4–8 wks</b><span data-de="Bis zum produktiven System">To a live, useful system</span></div>
       </div>
     </div>
   </section>
@@ -111,12 +110,12 @@
   <section class="pageintro section-light">
     <div class="pageintro-inner">
       <div>
-        <span class="pageintro-eyebrow">Your industry</span>
-        <h2 class="pageintro-title">The software that demands new behaviour from clinical staff is the software that never gets used.</h2>
+        <span class="pageintro-eyebrow" data-de="Ihre Branche">Your industry</span>
+        <h2 class="pageintro-title" data-de="Software, die von klinischem Personal neues Verhalten verlangt, ist die Software, die nie benutzt wird.">The software that demands new behaviour from clinical staff is the software that never gets used.</h2>
       </div>
       <div class="pageintro-lead">
-        <p>Healthcare operations are not short of technology. They are short of time, and intolerant of anything that adds clicks to an already overloaded day. The administrative burden — documentation, coordination, intake — is where the real drain lives.</p>
-        <p>We design AI around existing patterns: it removes steps rather than adding them, keeps sensitive data tightly controlled, and earns adoption because it makes the day lighter, not heavier.</p>
+        <p data-de="Dem Gesundheitswesen fehlt es nicht an Technologie. Es fehlt an Zeit — und an Toleranz für alles, was einem überladenen Tag weitere Klicks hinzufügt. Die administrative Last — Dokumentation, Koordination, Aufnahme — ist der eigentliche Kraftfresser.">Healthcare operations are not short of technology. They are short of time, and intolerant of anything that adds clicks to an already overloaded day. The administrative burden — documentation, coordination, intake — is where the real drain lives.</p>
+        <p data-de="Wir gestalten KI um bestehende Muster herum: Sie entfernt Schritte, statt welche hinzuzufügen, hält sensible Daten streng unter Kontrolle und wird angenommen, weil sie den Tag leichter macht — nicht schwerer.">We design AI around existing patterns: it removes steps rather than adding them, keeps sensitive data tightly controlled, and earns adoption because it makes the day lighter, not heavier.</p>
       </div>
     </div>
   </section>
@@ -124,133 +123,179 @@
   <!-- ===================== CHALLENGES ===================== -->
   <section class="industries section-light" id="challenges">
     <div class="industries-head">
-      <span class="services-eyebrow" style="display:block;margin-bottom:12px;">The pressure points</span>
-      <h2 class="industries-title">Three places where operations drain time that should go to care.</h2>
-      <p class="industries-sub">These are administrative and coordination problems, not clinical ones — which means they can be eased without touching the standard of care.</p>
+      <span class="services-eyebrow" style="display:block;margin-bottom:12px;" data-de="Die Druckpunkte">The pressure points</span>
+      <h2 class="industries-title" data-de="Drei Stellen, an denen der Betrieb Zeit verbraucht, die der Versorgung gehört.">Three places where operations drain time that should go to care.</h2>
+      <p class="industries-sub" data-de="Das sind Verwaltungs- und Koordinationsprobleme, keine klinischen — sie lassen sich lösen, ohne den Versorgungsstandard anzutasten.">These are administrative and coordination problems, not clinical ones — which means they can be eased without touching the standard of care.</p>
     </div>
-    <div class="industries-grid">
-      <article class="ind-card">
-        <h3>Documentation overload</h3>
-        <p>Notes, forms and reports consume hours that trained staff would rather spend with patients — and the burden grows faster than headcount.</p>
-      </article>
-      <article class="ind-card">
-        <h3>Fragmented coordination</h3>
-        <p>Scheduling, referrals and intake spread across phone, paper and disconnected systems, creating delays and repeated data entry.</p>
-      </article>
-      <article class="ind-card">
-        <h3>Sensitive data, no room for error</h3>
-        <p>Patient information carries strict obligations, so well-meaning shortcuts are not an option — any new tool has to be controlled by design.</p>
-      </article>
+    <div class="pp-marquee">
+      <div class="pp-track">
+        <div class="pp-set">
+          <article class="pp-card">
+            <div class="pp-media" style="background-image:url('images/medicine.jpg')"></div>
+            <div class="pp-scrim"></div>
+            <div class="pp-content">
+              <span class="pp-num">01</span>
+              <h3 data-de="Dokumentationslast">Documentation overload</h3>
+              <p data-de="Notizen, Formulare und Berichte verschlingen Stunden, die ausgebildetes Personal lieber bei Patienten verbringen würde — und die Last wächst schneller als der Personalstand.">Notes, forms and reports consume hours that trained staff would rather spend with patients — and the burden grows faster than headcount.</p>
+            </div>
+          </article>
+          <article class="pp-card">
+            <div class="pp-media" style="background-image:url('images/public.jpg')"></div>
+            <div class="pp-scrim"></div>
+            <div class="pp-content">
+              <span class="pp-num">02</span>
+              <h3 data-de="Fragmentierte Koordination">Fragmented coordination</h3>
+              <p data-de="Terminplanung, Überweisungen und Aufnahme verteilt über Telefon, Papier und getrennte Systeme — mit Verzögerungen und wiederholter Datenerfassung.">Scheduling, referrals and intake spread across phone, paper and disconnected systems, creating delays and repeated data entry.</p>
+            </div>
+          </article>
+          <article class="pp-card">
+            <div class="pp-media" style="background-image:url('images/research.jpg')"></div>
+            <div class="pp-scrim"></div>
+            <div class="pp-content">
+              <span class="pp-num">03</span>
+              <h3 data-de="Sensible Daten, kein Spielraum für Fehler">Sensitive data, no room for error</h3>
+              <p data-de="Patientendaten bringen strenge Pflichten mit — gut gemeinte Abkürzungen sind keine Option. Jedes neue Werkzeug muss by Design kontrolliert sein.">Patient information carries strict obligations, so well-meaning shortcuts are not an option — any new tool has to be controlled by design.</p>
+            </div>
+          </article>
+        </div>
+        <div class="pp-set" aria-hidden="true">
+          <article class="pp-card">
+            <div class="pp-media" style="background-image:url('images/medicine.jpg')"></div>
+            <div class="pp-scrim"></div>
+            <div class="pp-content">
+              <span class="pp-num">01</span>
+              <h3 data-de="Dokumentationslast">Documentation overload</h3>
+              <p data-de="Notizen, Formulare und Berichte verschlingen Stunden, die ausgebildetes Personal lieber bei Patienten verbringen würde — und die Last wächst schneller als der Personalstand.">Notes, forms and reports consume hours that trained staff would rather spend with patients — and the burden grows faster than headcount.</p>
+            </div>
+          </article>
+          <article class="pp-card">
+            <div class="pp-media" style="background-image:url('images/public.jpg')"></div>
+            <div class="pp-scrim"></div>
+            <div class="pp-content">
+              <span class="pp-num">02</span>
+              <h3 data-de="Fragmentierte Koordination">Fragmented coordination</h3>
+              <p data-de="Terminplanung, Überweisungen und Aufnahme verteilt über Telefon, Papier und getrennte Systeme — mit Verzögerungen und wiederholter Datenerfassung.">Scheduling, referrals and intake spread across phone, paper and disconnected systems, creating delays and repeated data entry.</p>
+            </div>
+          </article>
+          <article class="pp-card">
+            <div class="pp-media" style="background-image:url('images/research.jpg')"></div>
+            <div class="pp-scrim"></div>
+            <div class="pp-content">
+              <span class="pp-num">03</span>
+              <h3 data-de="Sensible Daten, kein Spielraum für Fehler">Sensitive data, no room for error</h3>
+              <p data-de="Patientendaten bringen strenge Pflichten mit — gut gemeinte Abkürzungen sind keine Option. Jedes neue Werkzeug muss by Design kontrolliert sein.">Patient information carries strict obligations, so well-meaning shortcuts are not an option — any new tool has to be controlled by design.</p>
+            </div>
+          </article>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- ===================== SOLUTIONS ===================== -->
-  <section class="services section-light">
+  <!-- ===================== SOLUTIONS (sticky card-stack) ===================== -->
+  <section class="services section-light svc-stack">
     <div class="services-head">
-      <span class="services-eyebrow">How we turn it around</span>
-      <h2 class="services-title">AI and Zoho that lighten the day — controlled, compliant, low-friction.</h2>
+      <span class="services-eyebrow" data-de="So drehen wir es um">How we turn it around</span>
+      <h2 class="services-title" data-de="KI und Zoho, die den Tag leichter machen — kontrolliert, konform, reibungsarm.">AI and Zoho that lighten the day — controlled, compliant, low-friction.</h2>
     </div>
-    <div class="svc-grid">
-      <article class="svc-block">
-        <span class="svc-num">01</span>
-        <h4>Documentation &amp; intake assistance</h4>
-        <p>AI that drafts and structures routine documentation from existing inputs, so staff review and confirm instead of typing from scratch — fewer clicks, not more.</p>
-      </article>
-      <article class="svc-block">
-        <span class="svc-num">02</span>
-        <h4>Coordination &amp; scheduling workflows</h4>
-        <p>Zoho-based workflows that connect scheduling, referrals and intake into one flow, removing duplicate entry and the phone tag that slows everything down.</p>
-      </article>
-      <article class="svc-block">
-        <span class="svc-num">03</span>
-        <h4>Controlled internal knowledge AI</h4>
-        <p>A GDPR-compliant assistant over your protocols and operational guidance, so staff get the right answer quickly without sensitive data ever leaving your control.</p>
-      </article>
-      <article class="svc-block">
-        <span class="svc-num">04</span>
-        <h4>Auditable administrative automation</h4>
-        <p>Routine classification, routing and follow-ups automated with full audit trails and human oversight where it counts — relief without losing control.</p>
-      </article>
+    <div class="svc-stack-wrap">
+      <div class="svc-stack-item">
+        <article class="svc-stack-card">
+          <span class="svc-num">01</span>
+          <div class="svc-stack-body">
+            <h4 data-de="Dokumentations- &amp; Aufnahmeassistenz">Documentation &amp; intake assistance</h4>
+            <p data-de="KI, die Routinedokumentation aus vorhandenen Eingaben entwirft und strukturiert — Personal prüft und bestätigt, statt von Grund auf zu tippen. Weniger Klicks, nicht mehr.">AI that drafts and structures routine documentation from existing inputs, so staff review and confirm instead of typing from scratch — fewer clicks, not more.</p>
+          </div>
+        </article>
+      </div>
+      <div class="svc-stack-item">
+        <article class="svc-stack-card">
+          <span class="svc-num">02</span>
+          <div class="svc-stack-body">
+            <h4 data-de="Koordinations- &amp; Terminworkflows">Coordination &amp; scheduling workflows</h4>
+            <p data-de="Zoho-basierte Workflows, die Terminplanung, Überweisungen und Aufnahme in einen Fluss verbinden — Doppelerfassung und Telefon-Pingpong entfallen.">Zoho-based workflows that connect scheduling, referrals and intake into one flow, removing duplicate entry and the phone tag that slows everything down.</p>
+          </div>
+        </article>
+      </div>
+      <div class="svc-stack-item">
+        <article class="svc-stack-card">
+          <span class="svc-num">03</span>
+          <div class="svc-stack-body">
+            <h4 data-de="Kontrollierte interne Wissens-KI">Controlled internal knowledge AI</h4>
+            <p data-de="Ein DSGVO-konformer Assistent über Ihren Protokollen und Verfahrensanweisungen — Personal bekommt schnell die richtige Antwort, ohne dass sensible Daten je Ihre Kontrolle verlassen.">A GDPR-compliant assistant over your protocols and operational guidance, so staff get the right answer quickly without sensitive data ever leaving your control.</p>
+          </div>
+        </article>
+      </div>
+      <div class="svc-stack-item">
+        <article class="svc-stack-card">
+          <span class="svc-num">04</span>
+          <div class="svc-stack-body">
+            <h4 data-de="Auditierbare Verwaltungsautomatisierung">Auditable administrative automation</h4>
+            <p data-de="Routine-Klassifizierung, Routing und Follow-ups automatisiert — mit vollständigen Audit-Trails und menschlicher Aufsicht, wo sie zählt. Entlastung ohne Kontrollverlust.">Routine classification, routing and follow-ups automated with full audit trails and human oversight where it counts — relief without losing control.</p>
+          </div>
+        </article>
+      </div>
     </div>
-    <a href="mailto:kailash@mpasys.ai" class="svc-cta">Tell us where the admin burden sits →</a>
+    <a href="mailto:kailash@mpasys.ai" class="svc-cta" data-de="Sagen Sie uns, wo die Verwaltungslast sitzt →">Tell us where the admin burden sits →</a>
   </section>
 
   <!-- ===================== STATEMENT ===================== -->
   <section class="statement section-light">
     <div class="statement-inner">
-      <p>Good healthcare AI does not ask stretched staff to learn a new system. It <b>quietly removes the steps</b> that were never the point of their day.</p>
-      <span class="statement-by">Healthcare Operations · GDPR by design</span>
+      <p data-de="Gute KI im Gesundheitswesen verlangt von überlastetem Personal kein neues System. Sie &lt;b&gt;entfernt leise die Schritte&lt;/b&gt;, die nie der Sinn des Tages waren.">Good healthcare AI does not ask stretched staff to learn a new system. It <b>quietly removes the steps</b> that were never the point of their day.</p>
+      <span class="statement-by" data-de="Gesundheitswesen · DSGVO by Design">Healthcare Operations · GDPR by design</span>
     </div>
   </section>
 
   <!-- ===================== PROOF STRIP ===================== -->
   <section class="proof">
     <div class="proof-inner">
-      <article class="proof-block"><span class="proof-num">Fewer</span><span class="proof-label">Clicks, not more</span><span class="proof-sub">Tools that remove steps from the day</span></article>
-      <article class="proof-block"><span class="proof-num">1 flow</span><span class="proof-label">Scheduling, referrals and intake</span><span class="proof-sub">Duplicate entry and phone tag removed</span></article>
-      <article class="proof-block"><span class="proof-num">Controlled</span><span class="proof-label">Patient data, by design</span><span class="proof-sub">Sensitive information never leaves your control</span></article>
-      <article class="proof-block"><span class="proof-num">4–8 wks</span><span class="proof-label">To first live deployment</span><span class="proof-sub">A working system staff actually adopt</span></article>
-    </div>
-  </section>
-
-  <!-- ===================== HOW WE ENGAGE ===================== -->
-  <section class="engage" id="engage">
-    <div class="engage-head">
-      <h2 class="engage-title">From first conversation to a live system — exactly how we work.</h2>
-      <p class="engage-sub">We move fast, we stay close, and we design around your team's day instead of against it.</p>
-    </div>
-    <div class="engage-grid">
-      <article class="step-card"><span class="step-num">01</span><h3>Understanding call — 30 minutes</h3><p>Where the admin burden sits and what the day really looks like.</p></article>
-      <article class="step-card"><span class="step-num">02</span><h3>Assessment — 1 to 2 weeks</h3><p>A process and data review with compliance considered first.</p></article>
-      <article class="step-card"><span class="step-num">03</span><h3>Build and deploy — 4 to 8 weeks</h3><p>Short cycles with staff testing that it genuinely helps.</p></article>
-      <article class="step-card"><span class="step-num">04</span><h3>Handover and support</h3><p>Training, documentation, and support through adoption.</p></article>
+      <article class="proof-block"><span class="proof-num" data-de="Weniger">Fewer</span><span class="proof-label" data-de="Klicks, nicht mehr">Clicks, not more</span><span class="proof-sub" data-de="Werkzeuge, die Schritte aus dem Tag entfernen">Tools that remove steps from the day</span></article>
+      <article class="proof-block"><span class="proof-num" data-de="1 Fluss">1 flow</span><span class="proof-label" data-de="Für Termine, Überweisungen und Aufnahme">Scheduling, referrals and intake</span><span class="proof-sub" data-de="Doppelerfassung und Telefon-Pingpong entfernt">Duplicate entry and phone tag removed</span></article>
+      <article class="proof-block"><span class="proof-num" data-de="Kontrolliert">Controlled</span><span class="proof-label" data-de="Patientendaten, by Design">Patient data, by design</span><span class="proof-sub" data-de="Sensible Informationen verlassen nie Ihre Kontrolle">Sensitive information never leaves your control</span></article>
+      <article class="proof-block"><span class="proof-num" data-de="4–8 Wo.">4–8 wks</span><span class="proof-label" data-de="Bis zum ersten Live-Einsatz">To first live deployment</span><span class="proof-sub" data-de="Ein System, das Personal wirklich annimmt">A working system staff actually adopt</span></article>
     </div>
   </section>
 
   <!-- ===================== CTA ===================== -->
   <section class="cta">
     <div class="cta-inner">
-      <h2 class="cta-title">The future of your<br/>operation starts here.</h2>
-      <p class="cta-copy">Take 30 minutes with us. We will tell you honestly where AI lifts the administrative load without adding risk or friction for clinical staff — and where it does not. No sales deck, just a direct conversation.</p>
-      <a href="mailto:kailash@mpasys.ai" class="btn-dark">Book a 30-Minute Call
+      <h2 class="cta-title" data-de="Die Zukunft Ihres&lt;br/&gt;Betriebs beginnt hier.">The future of your<br/>operation starts here.</h2>
+      <p class="cta-copy" data-de="Nehmen Sie sich 30 Minuten mit uns. Wir sagen Ihnen ehrlich, wo KI und Automatisierung Ihrem Betrieb messbar helfen — und wo nicht. Kein Sales-Deck, ein direktes Gespräch.">Take 30 minutes with us. We will tell you honestly where AI and automation genuinely ease your operations — and where they do not. No sales deck, just a direct conversation.</p>
+      <a href="mailto:kailash@mpasys.ai" class="btn-dark"><span data-de="30-Minuten-Gespräch buchen">Book a 30-Minute Call</span>
         <span class="btn-dark-arrow"><svg viewBox="0 0 24 24" width="14" height="14"><path d="M9 6 L15 12 L9 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
       </a>
-      <p class="cta-mail">Or email directly: <a href="mailto:kailash@mpasys.ai">kailash@mpasys.ai</a></p>
+      <p class="cta-mail"><span data-de="Oder direkt per E-Mail:">Or email directly:</span> <a href="mailto:kailash@mpasys.ai">kailash@mpasys.ai</a></p>
       <div class="cta-marks" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
     </div>
   </section>
 
   <!-- ===================== FOOTER ===================== -->
   <footer class="footer">
-    <h2 class="footer-big">Helping German businesses make AI work. Since day one.</h2>
+    <h2 class="footer-big" data-de="Wir bringen KI in deutschen Unternehmen zum Laufen. Von Anfang an.">Helping German businesses make AI work. Since day one.</h2>
     <div class="footer-cols">
       <div class="footer-col">
-        <span class="footer-col-h">Services</span>
-        <a href="service-ai.html">AI Consulting &amp; Engineering</a>
-        <a href="service-zoho.html#crm">Zoho CRM Implementation</a>
-        <a href="service-zoho.html#one">Zoho One Deployment</a>
-        <a href="service-ai.html#automation">Intelligent Automation</a>
-        <a href="service-ai.html#readiness">AI Readiness Assessment</a>
-        <a href="service-ai.html#custom">Custom AI Products</a>
+        <span class="footer-col-h" data-de="Leistungen">Services</span>
+        <a href="service-ai.html" data-de="KI-Beratung &amp; Engineering">AI Consulting &amp; Engineering</a>
+        <a href="service-ai.html#data" data-de="Datenfundament für KI">Data Foundations</a>
+        <a href="service-ai.html#automation" data-de="Intelligente Automatisierung">Intelligent Automation</a>
+        <a href="service-ai.html#readiness" data-de="AI-Readiness-Assessment">AI Readiness Assessment</a>
+        <a href="service-zoho.html#crm" data-de="Zoho-CRM-Implementierung">Zoho CRM Implementation</a>
+        <a href="service-zoho.html#one" data-de="Zoho-One-Einführung">Zoho One Deployment</a>
       </div>
       <div class="footer-col">
-        <span class="footer-col-h">Industries</span>
-        <a href="industry-manufacturing.html">Manufacturing &amp; Mittelstand</a>
-        <a href="industry-logistics.html">Logistics &amp; Supply Chain</a>
-        <a href="industry-finance.html">Finance &amp; Insurance</a>
-        <a href="industry-professional-services.html">Professional Services</a>
-        <a href="industry-healthcare.html">Healthcare Operations</a>
-        <a href="industry-b2b-sales.html">B2B Sales</a>
+        <span class="footer-col-h" data-de="Branchen">Industries</span>
+        <a href="industry-manufacturing.html" data-de="Fertigung &amp; Mittelstand">Manufacturing &amp; Mittelstand</a>
+        <a href="industry-logistics.html" data-de="Logistik &amp; Supply Chain">Logistics &amp; Supply Chain</a>
+        <a href="industry-finance.html" data-de="Finanzen &amp; Versicherung">Finance &amp; Insurance</a>
+        <a href="industry-healthcare.html" data-de="Gesundheitswesen">Healthcare Operations</a>
       </div>
       <div class="footer-col">
-        <span class="footer-col-h">Company</span>
-        <a href="index.html#about">About mpasys.ai</a>
-        <a href="cases.html">Case Studies</a>
-        <a href="insights.html">Insights</a>
-        <a href="mailto:kailash@mpasys.ai">Contact</a>
+        <span class="footer-col-h" data-de="Unternehmen">Company</span>
+        <a href="about.html" data-de="Über mpasys.ai">About mpasys.ai</a>
+        <a href="mailto:kailash@mpasys.ai" data-de="Kontakt">Contact</a>
       </div>
       <div class="footer-col">
-        <span class="footer-col-h">Legal</span>
+        <span class="footer-col-h" data-de="Rechtliches">Legal</span>
         <a href="#">Impressum</a>
         <a href="#">Datenschutzerklärung</a>
         <a href="#">Cookie-Einstellungen</a>
